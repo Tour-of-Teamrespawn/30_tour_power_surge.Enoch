@@ -1,0 +1,293 @@
+// Mission Select Info
+overviewPicture = "img\loadingScreen.paa";
+overviewText = "Royal marines assault fortified power station";
+overviewTextLocked = "Royal marines assault fortified power station";
+
+// Header
+class Header
+{
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 30;
+};
+
+// Lobby Settings
+
+// Mission Loading Info
+author = "Andy455 [Tour]";
+onLoadName = "30 [Tour] Power Surge";
+onLoadMission = "Royal marines assault fortified power station"; // name of mission in MP Select screen
+onLoadMissionTime = true;
+loadScreen = "img\loadingScreen.paa"; // img\loadScreen.paa
+briefingName = "30 [Tour] Power Surge";
+enableItemsDropping = 0;
+disabledAI = 1;
+enableDebugConsole[] = { "76561198000647052" };
+allowProfileGlasses = 0; // disables A3 profile glasses
+
+// Respawn Settings
+respawn = 3;
+respawnDelay = 30;
+respawnDialog = 1;
+respawnTemplates[] = {"Tickets"};
+respawnVehicleDelay = 30;
+
+
+#include "scripts\TOUR_RC\dialog\hpp\admintool.hpp"
+
+// Vanilla Radio Channels
+disableChannels[] =
+	{
+		{0, false, true}, // Disable Global voice chat
+		{1, false, true}, // Disable Side voice chat
+		{2, false, true}, // Disable Command voice chat
+		{3, false, true}, // Disable Group voice chat
+		{4, false, true}, // Disable Vehicle voice chat
+		{5, false, true}  // Disable Direct voice chat
+};
+
+// Debriefing
+class CfgDebriefing
+{
+	class SUCCESS
+	{
+		title = "Mission Success";
+		subtitle = "Power plant seized";
+		description = "The power plant was successfully seized from the KDF!";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = { 0.0, 0.3, 0.6, 1 }; // blufor colours
+	};
+	class FAIL
+	{
+		title = "Mission Aborted";
+		subtitle = "";
+		description = "You reported back in without completing all objectives.";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = { 0.0, 0.3, 0.6, 1 }; // blufor colours
+	};
+	class KIA
+	{
+		title = "Killed Failure";
+		subtitle = "KIA";
+		description = "All teammates were killed in action.";
+		pictureBackground = "";
+		picture = "o_inf";
+		pictureColor[] = {0.6, 0.1, 0.2, 1};
+	};
+};
+
+class Params
+{
+	class TOUR_param_Respawn
+	{
+		// paramsArray[0]
+		title = "Respawn Time (s):";
+		values[] = {0, 30, 60, 300, 600, 900};
+		default = 30;
+		texts[] = {"None", "30 Seconds", "1 Minute", "5 Minutes", "10 Minutes", "15 Minutes"};
+	};
+
+	class TOUR_param_tickets
+	{
+		// paramsArray[1]
+		title = "Lives:";
+		values[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 100};
+		default = 1;
+		texts[] = {"1", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "20", "30", "40", "50", "100"};
+	};
+
+	class TOUR_param_viewDistance
+	{
+		// paramsArray[2]
+		title = "View Distance:";
+		values[] = {1500, 2500, 5000, 7500, 10000};
+		default = 2500;
+		texts[] = {"2500m", "2500m", "5000m", "7500m", "10000m"};
+	};
+
+	class TOUR_param_TOD
+	{
+		// paramsArray[3]
+		title = "Time Of Day:";
+		values[] = {0, 1, 2, 3, 4};
+		default = 0;
+		texts[] = {"Sunrise", "Noon", "Sunset", "Night", "Random"};
+	};
+
+	class A455_param_DebugMode
+	{
+		// paramsArray[4]
+		title = "Debug mode:";
+		values[] = {0, 1};
+		default = 0;
+		texts[] = {"Disabled", "Enabled"};
+	};
+
+	class A455_param_enemyStrength
+	{
+		// paramsArray[5]
+		title = "Enemy strength:";
+		values[] = {0.2, 0.4, 0.6};
+		default = 0.4;
+		texts[] = {"Low", "Normal", "High"};
+	};
+
+	class A455_param_Fog
+	{
+		// paramsArray[6]
+		title = "Fog:";
+		values[] = {0, 0.25, 0.50, 0.75, 1};
+		default = 0.25;
+		texts[] = {"Clear", "Low", "Medium", "High", "Maximum"};
+	};
+
+	class A455_param_Overcast
+	{
+		// paramsArray[7]
+		title = "Overcast:";
+		values[] = {0, 0.25, 0.50, 0.75, 1};
+		default = 0.25;
+		texts[] = {"Clear", "Low", "Medium", "High", "Maximum"};
+	};
+};
+
+class CfgRadio
+{
+	sounds[] = {};
+	  
+	class TOUR_reportingback
+	{
+		name = "TOUR_reportingback";
+		sound[] = {};
+		title = "HQ, this is 2nd platoon, message, over.";
+	}; 
+	
+	class TOUR_welcomeback
+	{
+		name = "TOUR_welcomeback";
+		sound[] = {};
+		title = "2nd platoon, this is HQ. Go head, over.";
+	};
+	
+	class TOUR_playernotgood
+	{
+		name = "TOUR_playernotgood";
+		sound[] = {};
+		title = "The operation is a failure, we have aborted the mission and have regrouped back at point bear. Over.";
+	};  
+	
+	class TOUR_officernotgood
+	{
+		name = "TOUR_officernotgood";
+		sound[] = {};
+		title = "God, damn it! OK, at least some of your made it out of there. Head back to FOB Hawk for debriefing and latrine duty, out.";
+	};
+};
+
+// class CfgORBAT
+// {
+// 	class O_3co
+// 	{
+// 		id = 3;
+// 		idType = 0;
+// 		type = "Infantry";
+// 		side = "East";
+// 		size = "Company";
+// 		commander = "Dmitry Federov";
+// 		commanderRank = "Captain";
+// 		text = "text - %1 %2 %3";
+// 		textShort = "textShort - %1 %3";
+// 		description = "Testing 123";
+
+// 		// assets[] = {{B_Heli_Transport_03_F,5},{B_Heli_Light_01_F,3},{B_Heli_Light_01_armed_F,4},B_Heli_Transport_01_camo_F}; // Will display pictures of all available assets to the unit commander:
+// 	 	// Can be an array with format {classname, [int active icons], [int greyed out icons]}, or simply a classname
+// 		subordinates[] = {}; // Subordinates, searched on the same level as this class.
+// 		tags[] = {Tour,KDF,Russian,OPFOR}; // Group tags. When opening ORBAT viewer, user can define what tags will be accepted.
+
+// 		//insignia = "\ca\missions_f\data\orbat\7thInfantry_ca.paa"; // Unit insignia, displayed in ORBAT background and in tooltip
+// 		//colorInsignia[] = {0,0,1,1}; // Insignia image color (white default), can be either RGBA array, or class from CfgMarkerColors
+// 		//texture = "\ca\missions_f\data\orbat\customTexture_ca.paa"; // Custom texture, will replaced icon set by 'type' param.
+// 		//color[] = {0,0,1,1}; // Custom color, will replace color set by 'side' param. Can be either RGBA array, or class from CfgMarkerColors (e.g. color = "ColorWEST";)
+
+// 		// class 1stPlatoon
+// 		// {
+// 		// 	id = 0;
+// 		// 	idType = 0;
+// 		// 	type = "Infantry";
+// 		// 	side = "East";
+// 		// 	size = "Platoon";
+// 		// 	commander = "Unknown";
+// 		// 	commanderRank = "Unknown";
+// 		// 	text = "Ghost Platoon is Ran by Major Colton";
+// 		// 	textShort = "%1 %3";
+// 		// 	description = "Ghost Platoon";
+// 		// };
+
+// 		// class 2ndPlatoon
+// 		// {
+// 		// 	id = 1;
+// 		// 	idType = 0;
+// 		// 	type = "Infantry";
+// 		// 	side = "East";
+// 		// 	size = "Platoon";
+// 		// 	commander = "Dixon";
+// 		// 	commanderRank = "Lieutenant";
+// 		// 	text = "Raider Platoon is ran by Lieutenant Dixon";
+// 		// 	textShort = "%1 %3";
+// 		// 	description = "Raider Platoon";
+// 		// };
+// 	};
+// 	class B_2pt
+// 	{
+// 		id = 2;
+// 		idType = 0;
+// 		type = "Infantry";
+// 		side = "East";
+// 		size = "Platoon";
+// 		commander = "Andy455";
+// 		commanderRank = "Lieutenant";
+// 		text = "text - %1 %2 %3";
+// 		textShort = "textShort - %1 %3";
+// 		description = "Testing 123";
+
+// 		// assets[] = {{B_Heli_Transport_03_F,5},{B_Heli_Light_01_F,3},{B_Heli_Light_01_armed_F,4},B_Heli_Transport_01_camo_F}; // Will display pictures of all available assets to the unit commander:
+// 	 	// Can be an array with format {classname, [int active icons], [int greyed out icons]}, or simply a classname
+// 		subordinates[] = {}; // Subordinates, searched on the same level as this class.
+// 		tags[] = {Tour,BAF,UK,BLUFOR}; // Group tags. When opening ORBAT viewer, user can define what tags will be accepted.
+
+// 		//insignia = "\ca\missions_f\data\orbat\7thInfantry_ca.paa"; // Unit insignia, displayed in ORBAT background and in tooltip
+// 		//colorInsignia[] = {0,0,1,1}; // Insignia image color (white default), can be either RGBA array, or class from CfgMarkerColors
+// 		//texture = "\ca\missions_f\data\orbat\customTexture_ca.paa"; // Custom texture, will replace icon set by 'type' param.
+// 		//color[] = {0,0,1,1}; // Custom color, will replace color set by 'side' param. Can be either RGBA array, or class from CfgMarkerColors (e.g. color = "ColorWEST";)
+
+// 		// class 1stPlatoon
+// 		// {
+// 		// 	id = 0;
+// 		// 	idType = 0;
+// 		// 	type = "Infantry";
+// 		// 	side = "East";
+// 		// 	size = "Platoon";
+// 		// 	commander = "Unknown";
+// 		// 	commanderRank = "Unknown";
+// 		// 	text = "Ghost Platoon is Ran by Major Colton";
+// 		// 	textShort = "%1 %3";
+// 		// 	description = "Ghost Platoon";
+// 		// };
+
+// 		// class 2ndPlatoon
+// 		// {
+// 		// 	id = 1;
+// 		// 	idType = 0;
+// 		// 	type = "Infantry";
+// 		// 	side = "East";
+// 		// 	size = "Platoon";
+// 		// 	commander = "Dixon";
+// 		// 	commanderRank = "Lieutenant";
+// 		// 	text = "Raider Platoon is ran by Lieutenant Dixon";
+// 		// 	textShort = "%1 %3";
+// 		// 	description = "Raider Platoon";
+// 		// };
+// 	};
+// };
