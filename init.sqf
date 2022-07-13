@@ -1,6 +1,6 @@
 /*
 DO NOT EDIT THIS DIRECTLY, BUILD.PS1 will increment the minor version of this by 1 each time it runs
-###MISSION_VERSION 0.6
+###MISSION_VERSION 0.7
 */
 
 /* Creates an entry in the server and client RPT file with the mission name in place of the %1.
@@ -51,6 +51,7 @@ if (isServer) then {
 	
 	"KIA" remoteExecCall ["BIS_fnc_endMissionServer", 0, true];		
 };
+
 
 
 
