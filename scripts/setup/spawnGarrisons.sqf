@@ -15,24 +15,28 @@ private _totalUnits = 0;
 			private ["_availableGroups","_chosenGroup"];
 
 			// dynamically get a group of the correct size(ish) for the building
+			private _unitSize = 0;
 			if (count _allPositions <= 5 || typeOf _building == "dp_bigtank_old_f") then {
 				_availableGroups = "count (_x call BIS_fnc_getCfgSubClasses) == 2" configClasses (configFile >> "CfgGroups" >> "East" >> "UK3CB_KDF_O" >> "Infantry");
 				_availableGroups = _availableGroups + ("count (_x call BIS_fnc_getCfgSubClasses) == 2" configClasses (configFile >> "CfgGroups" >> "East" >> "UK3CB_KDF_O" >> "SpecOps"));
-				_totalUnits = _totalUnits + 2;
+				_unitSize = 2;
 			} else {
 				if (count _allPositions <= 10) then {
 					_availableGroups = "count (_x call BIS_fnc_getCfgSubClasses) == 4" configClasses (configFile >> "CfgGroups" >> "East" >> "UK3CB_KDF_O" >> "Infantry");
-				_availableGroups = _availableGroups + ("count (_x call BIS_fnc_getCfgSubClasses) == 4" configClasses (configFile >> "CfgGroups" >> "East" >> "UK3CB_KDF_O" >> "SpecOps"));
-				_totalUnits = _totalUnits + 4;
+					_availableGroups = _availableGroups + ("count (_x call BIS_fnc_getCfgSubClasses) == 4" configClasses (configFile >> "CfgGroups" >> "East" >> "UK3CB_KDF_O" >> "SpecOps"));
+					_unitSize = 4;
 				} else {
 					_availableGroups = "count (_x call BIS_fnc_getCfgSubClasses) == 8" configClasses (configFile >> "CfgGroups" >> "East" >> "UK3CB_KDF_O" >> "Infantry");
-				_availableGroups = _availableGroups + ("count (_x call BIS_fnc_getCfgSubClasses) == 8" configClasses (configFile >> "CfgGroups" >> "East" >> "UK3CB_KDF_O" >> "SpecOps"));
-				_totalUnits = _totalUnits + 8;
+					_availableGroups = _availableGroups + ("count (_x call BIS_fnc_getCfgSubClasses) == 8" configClasses (configFile >> "CfgGroups" >> "East" >> "UK3CB_KDF_O" >> "SpecOps"));
+					_unitSize = 8;
 				};
 			};
+			_totalUnits = _totalUnits + _unitSize;
 			_chosenGroup = selectRandom _availableGroups;
-
 			_group = [[0,0,0], EAST, _chosenGroup] call BIS_fnc_spawnGroup;
+			if (_unitSize == 8) then {
+ 				_group setVariable ["lambs_danger_enableGroupReinforce", true, true];
+			};
 			sleep 2;
 
 			// move all group members to random building position

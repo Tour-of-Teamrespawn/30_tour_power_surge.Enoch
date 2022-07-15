@@ -22,7 +22,11 @@ if (isMultiplayer) then
 	};
 
 	//Enemy strength
-	A455_ENEMY_STRENGTH = (paramsArray select 5);
+	switch (paramsArray select 5) do {
+		case 0: { A455_ENEMY_STRENGTH = 0.25; };
+		case 1: { A455_ENEMY_STRENGTH = 0.45; };
+		case 2: { A455_ENEMY_STRENGTH = 0.65; };
+	};
 
 	//Fog
 	A455_FOG = (paramsArray select 6);

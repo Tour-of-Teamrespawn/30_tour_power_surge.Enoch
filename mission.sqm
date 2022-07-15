@@ -5,7 +5,7 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=641;
+	toggles=513;
 	class ItemIDProvider
 	{
 		nextID=13536;
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=651;
+		nextID=669;
 	};
 	class Camera
 	{
-		pos[]={11883.122,162.70996,5271.7397};
-		dir[]={0.26101899,-0.85216773,0.45360041};
-		up[]={0.42502666,0.52326185,0.73861057};
-		aside[]={0.8667714,1.42098e-006,-0.49877578};
+		pos[]={11880.174,203.68411,5244.4106};
+		dir[]={0.38508734,-0.2323713,0.89319336};
+		up[]={0.092023678,0.97260946,0.21344092};
+		aside[]={0.91832501,-5.287875e-007,-0.39592496};
 	};
 };
 binarizationWanted=0;
@@ -148,14 +148,13 @@ addons[]=
 	"ace_kestrel4500",
 	"ace_atragmx",
 	"ace_rangecard",
-	"RKSL_PMII_525",
-	"lambs_wp"
+	"RKSL_PMII_525"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=94;
+		items=93;
 		class Item0
 		{
 			className="UK3CB_Factions_KDF";
@@ -778,12 +777,6 @@ class AddonsMetaData
 			name="RKSL_PMII_525";
 			author="RKSL Studios";
 		};
-		class Item93
-		{
-			className="lambs_wp";
-			name="LAMBS Danger WP";
-			author="LAMBS Danger Dev Team";
-		};
 	};
 };
 dlcs[]=
@@ -943,7 +936,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=672;
+		items=671;
 		class Item0
 		{
 			dataType="Group";
@@ -2441,7 +2434,7 @@ class Mission
 					};
 					id=5324;
 					type="UK3CB_KDF_O_SPOT";
-					atlOffset=0.00020599365;
+					atlOffset=0.00019836426;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2490,7 +2483,7 @@ class Mission
 			{
 			};
 			id=4311;
-			atlOffset=0.00020599365;
+			atlOffset=0.00019836426;
 		};
 		class Item55
 		{
@@ -2569,7 +2562,7 @@ class Mission
 					};
 					id=5323;
 					type="UK3CB_KDF_O_SNI";
-					atlOffset=23.310928;
+					atlOffset=23.310921;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2618,7 +2611,7 @@ class Mission
 			{
 			};
 			id=5321;
-			atlOffset=23.310928;
+			atlOffset=23.310921;
 		};
 		class Item57
 		{
@@ -38037,49 +38030,6 @@ class Mission
 					};
 				};
 				nAttributes=2;
-			};
-		};
-		class Item671
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={11526.083,73.005196,7122.502};
-				angles[]={0,0,0.0047822017};
-			};
-			flags=1;
-			id=13528;
-			type="lambs_wp_TaskArtilleryRegister";
-		};
-	};
-	class Connections
-	{
-		class LinkIDProvider
-		{
-			nextID=2;
-		};
-		class Links
-		{
-			items=2;
-			class Item0
-			{
-				linkID=0;
-				item0=13528;
-				item1=4171;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item1
-			{
-				linkID=1;
-				item0=13528;
-				item1=5756;
-				class CustomData
-				{
-					type="Sync";
-				};
 			};
 		};
 	};

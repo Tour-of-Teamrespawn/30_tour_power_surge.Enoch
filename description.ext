@@ -1,5 +1,5 @@
 // Mission Select Info
-overviewPicture = "img\loadingScreen.paa";
+overviewPicture = "";
 overviewText = "Royal marines assault fortified power station";
 overviewTextLocked = "Royal marines assault fortified power station";
 
@@ -15,11 +15,11 @@ class Header
 
 // Mission Loading Info
 author = "Andy455 [Tour]";
-onLoadName = "30 [Tour] Power Surge";
+onLoadName = "30 [Tour] Power Surge v0.13";
 onLoadMission = "Royal marines assault fortified power station"; // name of mission in MP Select screen
 onLoadMissionTime = true;
 loadScreen = "img\loadingScreen.paa"; // img\loadScreen.paa
-briefingName = "30 [Tour] Power Surge";
+briefingName = "30 [Tour] Power Surge v0.13";
 enableItemsDropping = 0;
 disabledAI = 1;
 enableDebugConsole[] = { "76561198000647052" };
@@ -69,7 +69,7 @@ class CfgDebriefing
 	};
 	class KIA
 	{
-		title = "Killed Failure";
+		title = "Mission Failure";
 		subtitle = "KIA";
 		description = "All teammates were killed in action.";
 		pictureBackground = "";
@@ -129,8 +129,8 @@ class Params
 	{
 		// paramsArray[5]
 		title = "Enemy strength:";
-		values[] = {0.2, 0.4, 0.6};
-		default = 0.4;
+		values[] = {1, 2, 3};
+		default = 2;
 		texts[] = {"Low", "Normal", "High"};
 	};
 
@@ -291,3 +291,6 @@ class CfgRadio
 // 		// };
 // 	};
 // };
+
+
+

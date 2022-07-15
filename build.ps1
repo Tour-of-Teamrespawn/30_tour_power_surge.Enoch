@@ -1,6 +1,10 @@
 # TODO - Copy new PBO to local dedicated server
 # TODO - Option to start (local) dedicated server with new mission launched
 
+###################################################################################################
+# Variable setup
+###################################################################################################
+
 $ErrorActionPreference = 'Stop'
 if (($null -eq $PSScriptRoot) -or ([System.String]::IsNullOrWhiteSpace($PSScriptRoot))) {
     # assume we are in the root of the mission folder (same as this file)
@@ -9,32 +13,90 @@ if (($null -eq $PSScriptRoot) -or ([System.String]::IsNullOrWhiteSpace($PSScript
     $ProjectRoot = $PSScriptRoot
 }
 $MissionFolderName = Split-Path $ProjectRoot -Leaf
-$TourServerIP = $ENV:TOUR_SERVER_IP # e.g. "12.23.32.41"
+$TourServerIP = $ENV:TOUR_SERVER_IP # e.g. "1.2.3.4"
 $TourServerPort = $ENV:TOUR_SERVER_PORT # e.g. 8821
 $TourServer = "$($TourServerIP):$($TourServerPort)"
-
-# Automatic increment of mission version found in init.sqf, used to add to the exported PBO
-$InitSQF = Get-Content -Path (Join-Path -Path $ProjectRoot -ChildPath 'init.sqf') -Raw
-if ($InitSQF -match '###MISSION_VERSION\s(\d\.\d)') {
-    $Version = [System.Version]($Matches.1)
-    Write-Host "Current mission version: $Version"
-
-    $NewVersion = [System.Version]"$($Version.Major).$($Version.Minor + 1)"
-    Write-Host "New mission version: $NewVersion"
-
-    $NewInitSQF = $InitSQF -replace '###MISSION_VERSION\s(\d\.\d)', "###MISSION_VERSION $NewVersion"
-    try { [System.IO.File]::WriteAllLines((Join-Path -Path $ProjectRoot -ChildPath 'init.sqf'), $NewInitSQF) }
-    catch { throw "Failed to overwrite init.sqf with version tag. Maybe close the file?" }
-    Write-Host "Overwrote init.sqf with version tag successfully"
-} else {
-    Write-Warning "Version missing from init.sqf. For automatic version increments add a block comment somewhere in your init.sqf with a line exactly like so: '###MISSION_VERSION 0.1'"
-}
 
 # Path to FileBank, part of the Arma 3 Tools steam download
 $FileBank_EXE = 'C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FileBank\FileBank.exe'
 
 # Where to save the resulting PBO, set to MPMissions for easy local testing
 $OutputPath = 'C:\Program Files (x86)\Steam\steamapps\common\Arma 3\MPMissions'
+
+# dedicated server path
+$A3_Server = 'C:\Program Files (x86)\Steam\steamapps\common\Arma 3\arma3server_x64.exe'
+
+$A3_Server_Config = "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\config.cfg"
+
+$ClientModList = @(
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@CUP Terrains - Core",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@CUP Terrains - Maps",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@CBA_A3",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@RKSL Studios - Attachments v3.02",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@RHSAFRF",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@RHSUSAF",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@JSRS SOUNDMOD",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@3CB BAF Vehicles",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@3CB BAF Weapons",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@3CB BAF Equipment",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@RHSGREF",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@TOT",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@3CB BAF Units",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@CUP Terrains - Maps 2.0",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@Jbad",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@LYTHIUM",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@RHSSAF",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@ace",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@JSRS SOUNDMOD - RHS USAF Mod Pack Sound Support",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@JSRS SOUNDMOD - RHS  AFRF Mod Pack Sound Support",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@ACRE2",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@ACE Compat - RHS- SAF",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@3CB Factions",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@ACE Compat - RHS USAF",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@ACE Compat - RHS AFRF",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@ACE Compat - RHS- GREF",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@JSRS SOUNDMOD - RHS SAF Mod Pack Support",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@JSRS SOUNDMOD - Reloading Sounds",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@JSRS SOUNDMOD - RHS GREF Mod Pack Sound Support",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@3CB BAF Units (RHS compatibility)",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@3CB BAF Weapons (RHS ammo compatibility)",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@3CB BAF Vehicles (RHS reskins)"
+)
+
+$ServerModList =@(
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@LAMBS_Danger.fsm",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@LAMBS_RPG",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@LAMBS_RPG_RHS",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@LAMBS_Suppression",
+    "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@LAMBS_Turrets"
+)
+
+###################################################################################################
+###################################################################################################
+
+# Automatic increment of mission version found in init.sqf, used to add to the exported PBO
+$InitSQF = Get-Content -Path (Join-Path -Path $ProjectRoot -ChildPath 'init.sqf') -Raw
+if ($InitSQF -match '###MISSION_VERSION\s(\d+\.\d+)') {
+    $Version = [System.Version]($Matches.1)
+    Write-Host "Current mission version: $Version"
+
+    $NewVersion = [System.Version]"$($Version.Major).$($Version.Minor + 1)"
+    Write-Host "New mission version: $NewVersion"
+
+    $NewInitSQF = $InitSQF -replace '###MISSION_VERSION\s(\d+\.\d+)', "###MISSION_VERSION $NewVersion"
+    try { [System.IO.File]::WriteAllLines((Join-Path -Path $ProjectRoot -ChildPath 'init.sqf'), $NewInitSQF) }
+    catch { throw "Failed to overwrite init.sqf with version tag. You may need to close the file and re-run the build script." }
+    Write-Host "Overwrote init.sqf with version tag successfully"
+
+    $DescriptionEXT = Get-Content -Path (Join-Path -Path $ProjectRoot -ChildPath 'description.ext') -Raw
+    $NewDescriptionEXT = $DescriptionEXT -replace '30 \[Tour\] Power Surge v\d+\.\d+', "30 [Tour] Power Surge v$NewVersion"
+    try { [System.IO.File]::WriteAllLines((Join-Path -Path $ProjectRoot -ChildPath 'description.ext'), $NewDescriptionEXT) }
+    catch { throw "Failed to overwrite description.ext with version tag. You may need to close the file and re-run the build script." }
+    Write-Host "Overwrote description.ext with version tag successfully"
+
+} else {
+    Write-Warning "Version missing from init.sqf. For automatic version increments add a block comment somewhere in your init.sqf with a line exactly like so: '###MISSION_VERSION 0.1'"
+}
 
 Write-Host "Exporting current mission folder: '$MissionFolderName' to MPMissions path: '$OutputPath'"
 & $FileBank_EXE -dst $OutputPath $ProjectRoot
@@ -50,11 +112,7 @@ $PBO_withVersion = $ExportedPBO.Name.SubString(0, $ExportedPBO.Name.IndexOf('.')
 # rename PBO to include version
 $NewPBO = Rename-Item -Path $ExportedPBO.FullName -NewName $PBO_withVersion -Force -PassThru
 
-$title    = "Upload PBO '$PBO_withVersion' to Tour ARMA 3 server $TourServer ?"
-$question = 'Are you sure you want to proceed?'
-$choices  = '&Yes', '&No'
-
-$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+$decision = $Host.UI.PromptForChoice("Upload PBO '$PBO_withVersion' to Tour ARMA 3 server $TourServer ?", 'Are you sure you want to proceed?', @('&Yes', '&No'), 1)
 if ($decision -eq 0) {
     $FTPUsername = if ($null -eq $env:TOUR_FTP_USERNAME) {
         # Environment var for username not set, prompt for response
@@ -76,7 +134,7 @@ if ($decision -eq 0) {
     
     # create the FtpWebRequest and configure it
     # ensure full path is set including desired filename
-    $ftp = [System.Net.FtpWebRequest]::Create("ftp://$TourServer/$($TourServer)_2302/mpmissions/$PBO_withVersion")
+    $ftp = [System.Net.FtpWebRequest]::Create("ftp://$TourServer/$($TourServerIP)_2302/mpmissions/$PBO_withVersion")
     $ftp = [System.Net.FtpWebRequest]$ftp
     $ftp.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
     $ftp.Credentials = new-object System.Net.NetworkCredential($FTPUsername,$FTPPassword)
@@ -94,4 +152,11 @@ if ($decision -eq 0) {
     $rs.Dispose()
 } else {
     Write-Host 'Skipping FTP upload'
+}
+
+$decision = $Host.UI.PromptForChoice("Start local server", 'Do you want to start up a local dedicated server?', @('&Yes', '&No'), 1)
+if ($decision -eq 0) {
+    & $A3_Server -config="$A3_Server_Config" -name=LocalDedicatedServer -mod="$($ClientModList -join ';')" -serverMod="$($ServerModList -join ';')"
+} else {
+    Write-Host 'Skip starting dedicated server'
 }

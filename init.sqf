@@ -1,6 +1,6 @@
 /*
 DO NOT EDIT THIS DIRECTLY, BUILD.PS1 will increment the minor version of this by 1 each time it runs
-###MISSION_VERSION 0.7
+###MISSION_VERSION 0.13
 */
 
 /* Creates an entry in the server and client RPT file with the mission name in place of the %1.
@@ -26,6 +26,8 @@ if (isServer) then {
 	[1, 2] execVM "scripts\setup\spawnTanks.sqf";
 	[] execVM "scripts\setup\setup_tasks.sqf";
 
+	[group mortar_lead] call lambs_wp_fnc_taskArtilleryRegister;
+
 	//  You can use any of the the following variables to check if a side is all dead or faitally injured and the side has no more lives left.
 	//	TOUR_RC_WEST_DEAD 
 	//	TOUR_RC_EAST_DEAD
@@ -46,12 +48,7 @@ if (isServer) then {
     if (!A455_NCTask_Ended) then {
         ["A455_task_nocollateral", "FAILED", true] call BIS_fnc_taskSetState;
     };
-	sleep 2;
-	// ["A455_task_nocollateral", "FAILED", true] call BIS_fnc_tasksetState;
 	
 	"KIA" remoteExecCall ["BIS_fnc_endMissionServer", 0, true];		
 };
-
-
-
 
