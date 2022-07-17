@@ -30,7 +30,7 @@ Not available at this time.<br/><br/>
         "]]; 
 
         player createDiaryRecord ["Diary", ["Execution", "
-Specific intel on force composition and fortifications means that company command will defer to the boots on the ground for the execution plan.<br/><br/>
+Specific intel on force composition and fortifications means that company command will defer to the platoon leader on the ground for the execution plan.<br/><br/>
         "]];
 
         player createDiaryRecord ["Diary", ["Mission", "
