@@ -29,10 +29,22 @@ if (isMultiplayer) then
 	};
 
 	//Fog
-	A455_FOG = (paramsArray select 6);
+	switch (paramsArray select 6) do {
+		case 0: { A455_FOG = 0; };
+		case 1: { A455_FOG = 0.25; };
+		case 2: { A455_FOG = 0.5; };
+		case 3: { A455_FOG = 0.75; };
+		case 4: { A455_FOG = 1; };
+	};
 
 	//Overcast
-	A455_OVERCAST = (paramsArray select 7);
+	switch (paramsArray select 7) do {
+		case 0: { A455_OVERCAST = 0; };
+		case 1: { A455_OVERCAST = 0.25; };
+		case 2: { A455_OVERCAST = 0.5; };
+		case 3: { A455_OVERCAST = 0.75; };
+		case 4: { A455_OVERCAST = 1; };
+	};
 	
 } else {
 	//singleplayer
@@ -44,7 +56,7 @@ if (isMultiplayer) then
 	TOUR_respawnTickets = [1,1,1,1];
 
 	//View Distance
-	TOUR_viewDistance = 2500;
+	TOUR_viewDistance = 1500;
 
 	//Time of Day
 	TOUR_TOD = 1;
@@ -56,10 +68,10 @@ if (isMultiplayer) then
 	A455_ENEMY_STRENGTH = 0.25;
 
 	//Fog
-	A455_FOG = 0.2;
+	A455_FOG = 0.25;
 
 	//Overcast
-	A455_OVERCAST = 0.2;
+	A455_OVERCAST = 0.25;
 };
 
 if (isServer) then {
@@ -88,9 +100,9 @@ if (isServer) then {
 	};
 	
 	// 30th July is a full moon
-	[1988,7,30,_timeH,_timeM] remoteExec ["setDate"];
+	[1988,7,30,_timeH,_timeM] remoteExec ["setDate", 0, true];
 
-	// global
+	// global effect
 	1 setFog A455_FOG;
 };
 

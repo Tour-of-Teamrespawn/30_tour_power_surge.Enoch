@@ -1,5 +1,4 @@
-# TODO - Copy new PBO to local dedicated server
-# TODO - Option to start (local) dedicated server with new mission launched
+# TODO - Option to start (local) dedicated server with new mission launched (edit server.cfg)
 
 ###################################################################################################
 # Variable setup
@@ -13,9 +12,6 @@ if (($null -eq $PSScriptRoot) -or ([System.String]::IsNullOrWhiteSpace($PSScript
     $ProjectRoot = $PSScriptRoot
 }
 $MissionFolderName = Split-Path $ProjectRoot -Leaf
-$TourServerIP = $ENV:TOUR_SERVER_IP # e.g. "1.2.3.4"
-$TourServerPort = $ENV:TOUR_SERVER_PORT # e.g. 8821
-$TourServer = "$($TourServerIP):$($TourServerPort)"
 
 # Path to FileBank, part of the Arma 3 Tools steam download
 $FileBank_EXE = 'C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FileBank\FileBank.exe'
@@ -114,6 +110,21 @@ $NewPBO = Rename-Item -Path $ExportedPBO.FullName -NewName $PBO_withVersion -For
 
 $decision = $Host.UI.PromptForChoice("Upload PBO '$PBO_withVersion' to Tour ARMA 3 server $TourServer ?", 'Are you sure you want to proceed?', @('&Yes', '&No'), 1)
 if ($decision -eq 0) {
+    $TourServerIP = if ($null -eq $env:TOUR_SERVER_IP) {
+        # Environment var for IP not set, prompt for response
+        Read-Host "Enter Tour server IP e.g. 1.2.3.4"
+    } else {
+        Write-Host "Getting Tour server IP env:TOUR_SERVER_IP"
+        $env:TOUR_SERVER_IP
+    }
+    $TourServerPort = if ($null -eq $env:TOUR_SERVER_PORT) {
+        # Environment var for port not set, prompt for response
+        Read-Host "Enter FTP port for Tour server e.g. 8821"
+    } else {
+        Write-Host "Getting FTP port from env:TOUR_SERVER_PORT"
+        $env:TOUR_SERVER_PORT
+    }
+    $TourServer = "$($TourServerIP):$($TourServerPort)"
     $FTPUsername = if ($null -eq $env:TOUR_FTP_USERNAME) {
         # Environment var for username not set, prompt for response
         Read-Host "Paste FTP username for the server '$TourServer'"
@@ -131,6 +142,8 @@ if ($decision -eq 0) {
 
     # ensure powershell can use all the available TLS protocols (not just TLS1.0 or w.e)
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12,[Net.SecurityProtocolType]::Tls11,[Net.SecurityProtocolType]::Tls,[Net.SecurityProtocolType]::Tls13
+    [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true} ;
+
     
     # create the FtpWebRequest and configure it
     # ensure full path is set including desired filename
@@ -140,7 +153,7 @@ if ($decision -eq 0) {
     $ftp.Credentials = new-object System.Net.NetworkCredential($FTPUsername,$FTPPassword)
     $ftp.UseBinary = $true
     $ftp.UsePassive = $true
-    $ftp.EnableSsl = $True
+    $ftp.EnableSsl = $true
     # read in the file to upload as a byte array
     $content = [System.IO.File]::ReadAllBytes($NewPBO.FullName)
     $ftp.ContentLength = $content.Length

@@ -1,6 +1,4 @@
 if (!isServer) exitwith {};
-
-// todo: dynamically grab spawn_veh_x somehow?
 private _spawnRate = _this select 0;
 private _minvehicles = _this select 1;
 private _maxvehicles = _this select 2;

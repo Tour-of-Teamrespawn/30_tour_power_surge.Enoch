@@ -17,11 +17,11 @@ _caller sideChat "HQ, this is 2nd platoon, message, over.";
 sleep 5;
 HQ sideChat "2nd platoon, this is HQ. Go head, over.";
 sleep 5;
-["A455_task_seize", "FAILED", true] call BIS_fnc_tasksetState;
 private _NCT = "A455_task_nocollateral" call BIS_fnc_taskState;
 if (_NCT != "FAILED") then {
 	["A455_task_nocollateral", "CANCELED", true] call BIS_fnc_tasksetState;
 };
+["A455_task_seize", "FAILED", true] call BIS_fnc_tasksetState;
 _caller sideChat "The operation is a failure, we have aborted the mission and have regrouped back at point bear. Over.";
 sleep 5;
 HQ sideChat "God, damn it! OK, at least some of your made it out of there. Head back to FOB Hawk for debriefing and latrine duty, out.";

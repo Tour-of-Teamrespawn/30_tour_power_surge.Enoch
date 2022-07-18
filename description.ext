@@ -15,11 +15,11 @@ class Header
 
 // Mission Loading Info
 author = "Andy455 [Tour]";
-onLoadName = "30 [Tour] Power Surge v0.15";
+onLoadName = "30 [Tour] Power Surge v0.19";
 onLoadMission = "Royal marines assault fortified power station"; // name of mission in MP Select screen
 onLoadMissionTime = true;
 loadScreen = "img\loadingScreen.paa"; // img\loadScreen.paa
-briefingName = "30 [Tour] Power Surge v0.15";
+briefingName = "30 [Tour] Power Surge v0.19";
 enableItemsDropping = 0;
 disabledAI = 1;
 enableDebugConsole[] = { "76561198000647052" };
@@ -104,7 +104,7 @@ class Params
 		title = "View Distance:";
 		values[] = {1500, 2500, 5000, 7500, 10000};
 		default = 2500;
-		texts[] = {"2500m", "2500m", "5000m", "7500m", "10000m"};
+		texts[] = {"1500m", "2500m", "5000m", "7500m", "10000m"};
 	};
 
 	class TOUR_param_TOD
@@ -138,8 +138,8 @@ class Params
 	{
 		// paramsArray[6]
 		title = "Fog:";
-		values[] = {0, 0.25, 0.50, 0.75, 1};
-		default = 0.25;
+		values[] = {0, 1, 2, 3, 4};
+		default = 1;
 		texts[] = {"Clear", "Low", "Medium", "High", "Maximum"};
 	};
 
@@ -147,8 +147,8 @@ class Params
 	{
 		// paramsArray[7]
 		title = "Overcast:";
-		values[] = {0, 0.25, 0.50, 0.75, 1};
-		default = 0.25;
+		values[] = {0, 1, 2, 3, 4};
+		default = 1;
 		texts[] = {"Clear", "Low", "Medium", "High", "Maximum"};
 	};
 };
@@ -291,6 +291,10 @@ class CfgRadio
 // 		// };
 // 	};
 // };
+
+
+
+
 
 
 

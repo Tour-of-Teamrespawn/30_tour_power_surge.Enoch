@@ -1,6 +1,4 @@
 if (!isServer) exitWith {};
-
-// TODO: dynamically grab spawn_veh_x somehow?
 private _minTanks = _this select 0;
 private _maxTanks = _this select 1;
 

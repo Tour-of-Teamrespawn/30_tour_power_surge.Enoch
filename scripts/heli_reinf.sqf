@@ -1,6 +1,7 @@
 // heli_trig / heli_trig2 calls this (REPEATABLE)
 
-// TODO: add radio warning
+// send radio warning message to all non-servers
+[] remoteExec ["A455_fnc_heliWarn",[0, -2] select isDedicated];
 
 private _unitList = _this;
 
