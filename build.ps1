@@ -22,7 +22,7 @@ $OutputPath = 'C:\Program Files (x86)\Steam\steamapps\common\Arma 3\MPMissions'
 # dedicated server path
 $A3_Server = 'C:\Program Files (x86)\Steam\steamapps\common\Arma 3\arma3server_x64.exe'
 
-$A3_Server_Config = "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\config.cfg"
+$A3_Server_Config = "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\server.cfg"
 
 $ClientModList = @(
     "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@CUP Terrains - Core",
@@ -70,43 +70,48 @@ $ServerModList =@(
 ###################################################################################################
 ###################################################################################################
 
-# Automatic increment of mission version found in init.sqf, used to add to the exported PBO
-$InitSQF = Get-Content -Path (Join-Path -Path $ProjectRoot -ChildPath 'init.sqf') -Raw
-if ($InitSQF -match '###MISSION_VERSION\s(\d+\.\d+)') {
-    $Version = [System.Version]($Matches.1)
-    Write-Host "Current mission version: $Version"
+$decision = $Host.UI.PromptForChoice("Increment version and make PBO?", 'Are you sure you want to proceed?', @('&Yes', '&No'), 1)
+if ($decision -eq 0) {
+    # Automatic increment of mission version found in init.sqf, used to add to the exported PBO
+    $InitSQF = Get-Content -Path (Join-Path -Path $ProjectRoot -ChildPath 'init.sqf') -Raw
+    if ($InitSQF -match '###MISSION_VERSION\s(\d+\.\d+)') {
+        $Version = [System.Version]($Matches.1)
+        Write-Host "Current mission version: $Version"
 
-    $NewVersion = [System.Version]"$($Version.Major).$($Version.Minor + 1)"
-    Write-Host "New mission version: $NewVersion"
+        $NewVersion = [System.Version]"$($Version.Major).$($Version.Minor + 1)"
+        Write-Host "New mission version: $NewVersion"
 
-    $NewInitSQF = $InitSQF -replace '###MISSION_VERSION\s(\d+\.\d+)', "###MISSION_VERSION $NewVersion"
-    try { [System.IO.File]::WriteAllLines((Join-Path -Path $ProjectRoot -ChildPath 'init.sqf'), $NewInitSQF) }
-    catch { throw "Failed to overwrite init.sqf with version tag. You may need to close the file and re-run the build script." }
-    Write-Host "Overwrote init.sqf with version tag successfully"
+        $NewInitSQF = $InitSQF -replace '###MISSION_VERSION\s(\d+\.\d+)', "###MISSION_VERSION $NewVersion"
+        try { [System.IO.File]::WriteAllLines((Join-Path -Path $ProjectRoot -ChildPath 'init.sqf'), $NewInitSQF) }
+        catch { throw "Failed to overwrite init.sqf with version tag. You may need to close the file and re-run the build script." }
+        Write-Host "Overwrote init.sqf with version tag successfully"
 
-    $DescriptionEXT = Get-Content -Path (Join-Path -Path $ProjectRoot -ChildPath 'description.ext') -Raw
-    $NewDescriptionEXT = $DescriptionEXT -replace '30 \[Tour\] Power Surge v\d+\.\d+', "30 [Tour] Power Surge v$NewVersion"
-    try { [System.IO.File]::WriteAllLines((Join-Path -Path $ProjectRoot -ChildPath 'description.ext'), $NewDescriptionEXT) }
-    catch { throw "Failed to overwrite description.ext with version tag. You may need to close the file and re-run the build script." }
-    Write-Host "Overwrote description.ext with version tag successfully"
+        $DescriptionEXT = Get-Content -Path (Join-Path -Path $ProjectRoot -ChildPath 'description.ext') -Raw
+        $NewDescriptionEXT = $DescriptionEXT -replace '30 \[Tour\] Power Surge v\d+\.\d+', "30 [Tour] Power Surge v$NewVersion"
+        try { [System.IO.File]::WriteAllLines((Join-Path -Path $ProjectRoot -ChildPath 'description.ext'), $NewDescriptionEXT) }
+        catch { throw "Failed to overwrite description.ext with version tag. You may need to close the file and re-run the build script." }
+        Write-Host "Overwrote description.ext with version tag successfully"
 
+    } else {
+        Write-Warning "Version missing from init.sqf. For automatic version increments add a block comment somewhere in your init.sqf with a line exactly like so: '###MISSION_VERSION 0.1'"
+    }
+
+    Write-Host "Exporting current mission folder: '$MissionFolderName' to MPMissions path: '$OutputPath'"
+    & $FileBank_EXE -dst $OutputPath $ProjectRoot
+
+    # Get the pbo built with FileBank
+    $ExportedPBO = Get-Item -Path (Join-Path -Path $OutputPath -ChildPath "$MissionFolderName.pbo")
+
+    # insert (file name compatible) version to pbo before world
+    # insert _mods_ as it will pretty much always do it anyway
+    # e.g. 30_tour_power_surge.Enoch.pbo -> 30_tour_power_surge_mods_0_2.Enoch.pbo
+    $PBO_withVersion = $ExportedPBO.Name.SubString(0, $ExportedPBO.Name.IndexOf('.')) + "_mods" + "_v$($NewVersion.ToString().Replace('.','_'))" + $ExportedPBO.Name.SubString($ExportedPBO.Name.IndexOf('.'))
+
+    # rename PBO to include version
+    $NewPBO = Rename-Item -Path $ExportedPBO.FullName -NewName $PBO_withVersion -Force -PassThru
 } else {
-    Write-Warning "Version missing from init.sqf. For automatic version increments add a block comment somewhere in your init.sqf with a line exactly like so: '###MISSION_VERSION 0.1'"
+    Write-Host "Skipping version increment and PBO make"
 }
-
-Write-Host "Exporting current mission folder: '$MissionFolderName' to MPMissions path: '$OutputPath'"
-& $FileBank_EXE -dst $OutputPath $ProjectRoot
-
-# Get the pbo built with FileBank
-$ExportedPBO = Get-Item -Path (Join-Path -Path $OutputPath -ChildPath "$MissionFolderName.pbo")
-
-# insert (file name compatible) version to pbo before world
-# insert _mods_ as it will pretty much always do it anyway
-# e.g. 30_tour_power_surge.Enoch.pbo -> 30_tour_power_surge_mods_0_2.Enoch.pbo
-$PBO_withVersion = $ExportedPBO.Name.SubString(0, $ExportedPBO.Name.IndexOf('.')) + "_mods" + "_v$($NewVersion.ToString().Replace('.','_'))" + $ExportedPBO.Name.SubString($ExportedPBO.Name.IndexOf('.'))
-
-# rename PBO to include version
-$NewPBO = Rename-Item -Path $ExportedPBO.FullName -NewName $PBO_withVersion -Force -PassThru
 
 $decision = $Host.UI.PromptForChoice("Upload PBO '$PBO_withVersion' to Tour ARMA 3 server $TourServer ?", 'Are you sure you want to proceed?', @('&Yes', '&No'), 1)
 if ($decision -eq 0) {
@@ -169,6 +174,16 @@ if ($decision -eq 0) {
 
 $decision = $Host.UI.PromptForChoice("Start local server", 'Do you want to start up a local dedicated server?', @('&Yes', '&No'), 1)
 if ($decision -eq 0) {
+
+    $CurrCFG = Get-Content -Path $A3_Server_Config -Raw
+    if ($CurrCFG -match 'template\s+=\s+(.*);') {
+        $NewCFG = $CurrCFG -replace $Matches.1, $NewPBO.Basename
+
+        try { [System.IO.File]::WriteAllLines($A3_Server_Config, $NewCFG) }
+        catch { throw "Failed to overwrite server config with new PBO. You may need to close the file and re-run the build script." }
+        Write-Host "Overwrote server config with version tag successfully"
+    }
+    
     & $A3_Server -config="$A3_Server_Config" -name=LocalDedicatedServer -mod="$($ClientModList -join ';')" -serverMod="$($ServerModList -join ';')"
 } else {
     Write-Host 'Skip starting dedicated server'

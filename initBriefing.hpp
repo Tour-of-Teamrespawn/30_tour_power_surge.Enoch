@@ -5,15 +5,19 @@ switch (side player) do
 {
     case WEST:
     {
-
         player createDiaryRecord ["Diary", ["Signals","
-ALPHA - Company command - PRC343 Ch 1<br/>
-BRAVO - Assault Squad 1 - PRC343 Ch 2<br/>
-CHARLIE - Assault Squad 2 - PRC343 Ch 3<br/>
-DELTA - Assault Squad 3 - PRC343 Ch 4<br/>
-ECHO - Mortar team - PRC343 Ch 5<br/>
-FOXTROT - Sniper team - PRC343 Ch 6<br/><br/>
-ALL TEAMS PRC152 Ch 1<br/><br/>
+ALPHA - Company command<br/>PRC343 Ch 1 - <execute expression='private _personalRadio = [""ACRE_PRC343""] call acre_api_fnc_getRadioByType; [_personalRadio, 1] call acre_api_fnc_setradioChannel;'>Set PRC343 Ch 1</execute><br/><br/>
+BRAVO - Assault Squad 1<br/>PRC343 Ch 2 - <execute expression='private _personalRadio = [""ACRE_PRC343""] call acre_api_fnc_getRadioByType; [_personalRadio, 2] call acre_api_fnc_setradioChannel;'>Set PRC343 Ch 2</execute><br/><br/>
+CHARLIE - Assault Squad 2<br/>PRC343 Ch 3 - <execute expression='private _personalRadio = [""ACRE_PRC343""] call acre_api_fnc_getRadioByType; [_personalRadio, 3] call acre_api_fnc_setradioChannel;'>Set PRC343 Ch 3</execute><br/><br/>
+DELTA - Assault Squad 3<br/>PRC343 Ch 4 - <execute expression='private _personalRadio = [""ACRE_PRC343""] call acre_api_fnc_getRadioByType; [_personalRadio, 4] call acre_api_fnc_setradioChannel;'>Set PRC343 Ch 4</execute><br/><br/>
+ECHO - Mortar team<br/>PRC343 Ch 5 - <execute expression='private _personalRadio = [""ACRE_PRC343""] call acre_api_fnc_getRadioByType; [_personalRadio, 5] call acre_api_fnc_setradioChannel;'>Set PRC343 Ch 5</execute><br/><br/>
+FOXTROT - Sniper team<br/>PRC343 Ch 6 - <execute expression='private _personalRadio = [""ACRE_PRC343""] call acre_api_fnc_getRadioByType; [_personalRadio, 6] call acre_api_fnc_setradioChannel;'>Set PRC343 Ch 6</execute><br/><br/>
+
+ALL TEAMS PRC152 Ch 1 - <execute expression='private _handheldRadio = [""ACRE_PRC152""] call acre_api_fnc_getRadioByType; [_handheldRadio, 1] call acre_api_fnc_setradioChannel;'>Set PRC152 Ch 1</execute><br/><br/>
+
+Recommended config:<br/>
+PRC343 (Short range) = PTT 1 / Left ear <br/>
+PRC152 (Long range) = PTT 2 / Right ear<br/>
         "]];  
 
         player createDiaryRecord ["Diary", ["Logistics", "

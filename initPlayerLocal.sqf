@@ -13,10 +13,10 @@ waitUntil { !isNil { player getVariable "A455_GROUP" }; };
 A455_fnc_heliWarn = {
 	enableRadio true;
 	sleep 1;
-	_caller sideChat "2nd platoon, this is HQ. Be advised we have two radar contacts headed your way, get the hell out of there!";
+	HQ sideChat "2nd platoon, this is HQ. Be advised we have two radar contacts headed your way, get the hell out of there!";
 	sleep 1;
 	enableRadio false;
-}
+};
 
 if (A455_DEBUG_MODE) then {
 	while {alive player} do {

@@ -42,7 +42,7 @@ while {(alive _heli1v && canMove _heli1v) || (alive _heli2v && canMove _heli2v)}
 
 	private _wp1 = _group1 addWaypoint [(getPos (_unitList select 0)),0];
 	_group1 setCurrentWaypoint _wp1;
-	_wp1 setWaypointSpeed "FULL";
+	_wp1 setWaypointSpeed "LIMITED";
 	_wp1 setWaypointCombatMode "RED";
 	_wp1 setWaypointBehaviour "COMBAT";
 	_wp1 setWaypointType "SAD";
@@ -56,7 +56,7 @@ while {(alive _heli1v && canMove _heli1v) || (alive _heli2v && canMove _heli2v)}
 
 	private _wp2 = _group2 addWaypoint [(getPos (_unitList select 0)),0];
 	_group2 setCurrentWaypoint _wp2;
-	_wp2 setWaypointSpeed "FULL";
+	_wp2 setWaypointSpeed "LIMITED";
 	_wp2 setWaypointCombatMode "RED";
 	_wp2 setWaypointBehaviour "COMBAT";
 	_wp2 setWaypointType "SAD";

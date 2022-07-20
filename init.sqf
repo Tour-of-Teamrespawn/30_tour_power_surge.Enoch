@@ -1,6 +1,6 @@
 /*
 DO NOT EDIT THIS DIRECTLY, BUILD.PS1 will increment the minor version of this by 1 each time it runs
-###MISSION_VERSION 0.19
+###MISSION_VERSION 0.26
 */
 
 /* Creates an entry in the server and client RPT file with the mission name in place of the %1.
@@ -8,7 +8,6 @@ Makes it easier to debug when you know what mission created the error. */
 diag_log text "";
 diag_log text format["|=============================   %1   =============================|", missionName];
 diag_log text "";
-
 
 private _p = execVM "scripts\params\params.sqf";
 waitUntil {scriptDone _p};
@@ -51,9 +50,4 @@ if (isServer) then {
 	
 	"KIA" remoteExecCall ["BIS_fnc_endMissionServer", 0, true];		
 };
-
-
-
-
-
 

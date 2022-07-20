@@ -15,11 +15,11 @@ class Header
 
 // Mission Loading Info
 author = "Andy455 [Tour]";
-onLoadName = "30 [Tour] Power Surge v0.19";
-onLoadMission = "Royal marines assault fortified power station"; // name of mission in MP Select screen
+onLoadName = "30 [Tour] Power Surge v0.26";
+onLoadMission = "Royal marines assault a fortified power station"; // name of mission in MP Select screen
 onLoadMissionTime = true;
 loadScreen = "img\loadingScreen.paa"; // img\loadScreen.paa
-briefingName = "30 [Tour] Power Surge v0.19";
+briefingName = "30 [Tour] Power Surge v0.26";
 enableItemsDropping = 0;
 disabledAI = 1;
 enableDebugConsole[] = { "76561198000647052" };
@@ -291,6 +291,13 @@ class CfgRadio
 // 		// };
 // 	};
 // };
+
+
+
+
+
+
+
 
 
 
