@@ -23,9 +23,9 @@ if (isMultiplayer) then
 
 	//Enemy strength
 	switch (paramsArray select 5) do {
-		case 0: { A455_ENEMY_STRENGTH = 0.25; };
-		case 1: { A455_ENEMY_STRENGTH = 0.45; };
-		case 2: { A455_ENEMY_STRENGTH = 0.65; };
+		case 0: { A455_ENEMY_STRENGTH = 0.33; };
+		case 1: { A455_ENEMY_STRENGTH = 0.50; };
+		case 2: { A455_ENEMY_STRENGTH = 0.75; };
 	};
 
 	//Fog
@@ -59,13 +59,13 @@ if (isMultiplayer) then
 	TOUR_viewDistance = 1500;
 
 	//Time of Day
-	TOUR_TOD = 1;
+	TOUR_TOD = 0;
 
 	//Debug mode
 	A455_DEBUG_MODE = true;
 
 	//Enemy strength
-	A455_ENEMY_STRENGTH = 0.25;
+	A455_ENEMY_STRENGTH = 0.5;
 
 	//Fog
 	A455_FOG = 0.25;

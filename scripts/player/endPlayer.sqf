@@ -3,7 +3,7 @@ private _laptop = _this select 1;
 private _action = _this select 2;
 
 if (A455_DEBUG_MODE) then {
-	hint format ["---endPlayer---\n%1\n%2\n%3\n%4",_caller,_laptop,HQ]
+	hint format ["---endPlayer---\n%1\n%2\n%3\n%4",_caller,_laptop,HQ];
 };
 if (!isDedicated) then {
     _laptop removeAction _action;

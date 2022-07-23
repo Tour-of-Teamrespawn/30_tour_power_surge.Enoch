@@ -8,7 +8,8 @@ $ErrorActionPreference = 'Stop'
 if (($null -eq $PSScriptRoot) -or ([System.String]::IsNullOrWhiteSpace($PSScriptRoot))) {
     # assume we are in the root of the mission folder (same as this file)
     $ProjectRoot = (Get-Location).Path
-} else {
+}
+else {
     $ProjectRoot = $PSScriptRoot
 }
 $MissionFolderName = Split-Path $ProjectRoot -Leaf
@@ -59,7 +60,7 @@ $ClientModList = @(
     "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@3CB BAF Vehicles (RHS reskins)"
 )
 
-$ServerModList =@(
+$ServerModList = @(
     "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@LAMBS_Danger.fsm",
     "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@LAMBS_RPG",
     "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@LAMBS_RPG_RHS",
@@ -92,7 +93,8 @@ if ($decision -eq 0) {
         catch { throw "Failed to overwrite description.ext with version tag. You may need to close the file and re-run the build script." }
         Write-Host "Overwrote description.ext with version tag successfully"
 
-    } else {
+    }
+    else {
         Write-Warning "Version missing from init.sqf. For automatic version increments add a block comment somewhere in your init.sqf with a line exactly like so: '###MISSION_VERSION 0.1'"
     }
 
@@ -109,7 +111,8 @@ if ($decision -eq 0) {
 
     # rename PBO to include version
     $NewPBO = Rename-Item -Path $ExportedPBO.FullName -NewName $PBO_withVersion -Force -PassThru
-} else {
+}
+else {
     Write-Host "Skipping version increment and PBO make"
 }
 
@@ -118,14 +121,16 @@ if ($decision -eq 0) {
     $TourServerIP = if ($null -eq $env:TOUR_SERVER_IP) {
         # Environment var for IP not set, prompt for response
         Read-Host "Enter Tour server IP e.g. 1.2.3.4"
-    } else {
+    }
+    else {
         Write-Host "Getting Tour server IP env:TOUR_SERVER_IP"
         $env:TOUR_SERVER_IP
     }
     $TourServerPort = if ($null -eq $env:TOUR_SERVER_PORT) {
         # Environment var for port not set, prompt for response
         Read-Host "Enter FTP port for Tour server e.g. 8821"
-    } else {
+    }
+    else {
         Write-Host "Getting FTP port from env:TOUR_SERVER_PORT"
         $env:TOUR_SERVER_PORT
     }
@@ -133,21 +138,23 @@ if ($decision -eq 0) {
     $FTPUsername = if ($null -eq $env:TOUR_FTP_USERNAME) {
         # Environment var for username not set, prompt for response
         Read-Host "Paste FTP username for the server '$TourServer'"
-    } else {
+    }
+    else {
         Write-Host "Getting FTP username from env:TOUR_FTP_USERNAME"
         $env:TOUR_FTP_USERNAME
     }
     $FTPPassword = if ($null -eq $env:TOUR_FTP_PASSWORD) {
         # Environment var for password not set, prompt for response
         Read-Host "Paste FTP password for user '$FTPUsername'" -MaskInput
-    } else {
+    }
+    else {
         Write-Host "Getting FTP password from env:TOUR_FTP_PASSWORD"
         $env:TOUR_FTP_PASSWORD
     }
 
     # ensure powershell can use all the available TLS protocols (not just TLS1.0 or w.e)
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12,[Net.SecurityProtocolType]::Tls11,[Net.SecurityProtocolType]::Tls,[Net.SecurityProtocolType]::Tls13
-    [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true} ;
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls, [Net.SecurityProtocolType]::Tls13
+    [System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $true } ;
 
     
     # create the FtpWebRequest and configure it
@@ -155,7 +162,7 @@ if ($decision -eq 0) {
     $ftp = [System.Net.FtpWebRequest]::Create("ftp://$TourServer/$($TourServerIP)_2302/mpmissions/$PBO_withVersion")
     $ftp = [System.Net.FtpWebRequest]$ftp
     $ftp.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
-    $ftp.Credentials = new-object System.Net.NetworkCredential($FTPUsername,$FTPPassword)
+    $ftp.Credentials = new-object System.Net.NetworkCredential($FTPUsername, $FTPPassword)
     $ftp.UseBinary = $true
     $ftp.UsePassive = $true
     $ftp.EnableSsl = $true
@@ -168,12 +175,20 @@ if ($decision -eq 0) {
     # be sure to clean up after ourselves
     $rs.Close()
     $rs.Dispose()
-} else {
+}
+else {
     Write-Host 'Skipping FTP upload'
 }
 
 $decision = $Host.UI.PromptForChoice("Start local server", 'Do you want to start up a local dedicated server?', @('&Yes', '&No'), 1)
 if ($decision -eq 0) {
+
+    if ($null -eq $NewPBO) {
+        Write-Host "NewPBO not found (didn't increment?) using last modified PBO in output folder for server config"
+        $NewPBO = Get-ChildItem -Path $OutputPath -Filter '*.pbo' | sort-object -Property 'LastWriteTime' -Descending | Select-Object -First 1
+    } else {
+        Write-Host "Using new PBO with incremented version in server config."
+    }
 
     $CurrCFG = Get-Content -Path $A3_Server_Config -Raw
     if ($CurrCFG -match 'template\s+=\s+(.*);') {
@@ -185,6 +200,7 @@ if ($decision -eq 0) {
     }
     
     & $A3_Server -config="$A3_Server_Config" -name=LocalDedicatedServer -mod="$($ClientModList -join ';')" -serverMod="$($ServerModList -join ';')"
-} else {
+}
+else {
     Write-Host 'Skip starting dedicated server'
 }

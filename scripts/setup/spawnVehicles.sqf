@@ -7,37 +7,31 @@ private _availableCars = "((gettext (_x >> ""faction"")) == ""UK3CB_KDF_O"") && 
 
 private _totalvehicles = 0;
 
-for [{
-    _i = 0
-}, {
-    _i <= 38
-}, {
-    _i = _i + 1
-}] do {
-if (_totalvehicles < _maxvehicles) then {
-    if (_totalvehicles < _minvehicles || (random 1 > _spawnRate)) then {
-        private _logicObject = call compile ("spawn_veh_" + str _i);
-        private _position = getPosATL _logicObject;
-        private _vehicle = createvehicle [configname (selectRandom _availableCars), [_position select 0, _position select 1, 0.35], [], 0, "CAN_COLLIDE"];
-        if (random 1 > _spawnRate) then {
-            _vehicle lock 3;
-            // lock for players only
+for [{ _i = 0 }, { _i <= 38 }, { _i = _i + 1 }] do {
+    if (_totalvehicles < _maxvehicles) then {
+        if (_totalvehicles < _minvehicles || (_spawnRate > random 1)) then {
+            private _logicObject = call compile ("spawn_veh_" + str _i);
+            private _position = getPosATL _logicObject;
+            private _vehicle = createvehicle [configname (selectRandom _availableCars), [_position select 0, _position select 1, 0.35], [], 0, "CAN_COLLIDE"];
+            if (0.5 > random 1) then {
+                // lock for players only
+                _vehicle lock 3;
+            };
+            _vehicle allowdamage false;
+            _vehicle setDir (getDir _logicObject);
+            
+            if (A455_DEBUG_modE) then {
+                private _marker = createMarker [("vehtracker_" + str random 10000000), _position];
+                _marker setMarkertype "hd_dot";
+                _marker setMarkerColor "ColorBlack";
+                _marker setMarkertext (typeOf _vehicle);
+            };
+            
+            _totalvehicles = _totalvehicles + 1;
+            sleep 1;
+            _vehicle allowdamage true;
         };
-        _vehicle allowdamage false;
-        _vehicle setDir (getDir _logicObject);
-        
-        if (A455_DEBUG_modE) then {
-            private _marker = createMarker [("vehtracker_" + str random 10000000), _position];
-            _marker setMarkertype "hd_dot";
-            _marker setMarkerColor "ColorBlack";
-            _marker setMarkertext (typeOf _vehicle);
-        };
-        
-        _totalvehicles = _totalvehicles + 1;
-        sleep 1;
-        _vehicle allowdamage true;
     };
-};
 };
 
 // hint str _totalvehicles

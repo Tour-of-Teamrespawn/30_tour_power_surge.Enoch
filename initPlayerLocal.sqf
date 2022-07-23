@@ -7,6 +7,12 @@ laptop addAction ["Report In", "scripts\player\endAction.sqf", nil, 10, true, fa
 
 player execVM "scripts\player\player_loadouts.sqf";
 
+player playaction "stand";
+
+if (!A455_DEBUG_MODE) then {
+	_int = execVM "scripts\player\intro.sqf";
+};
+
 waitUntil { !isNil { player getVariable "A455_GROUP" }; };
 [player, (player getVariable "A455_GROUP")] execVM "scripts\player\setup_acre.sqf";
 

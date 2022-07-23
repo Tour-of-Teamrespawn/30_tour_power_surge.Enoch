@@ -13,7 +13,7 @@
 params ["_unit", "_localUnittype"];
 
 if (A455_DEBUG_MODE) then {
-    hint format ["Group: %1", _localUnittype];
+    // hint format ["Group: %1", _localUnittype];
 };
 
 ["ACRE_PRC343", "default", "TOUR_preset1"] call acre_api_fnc_copyPreset;

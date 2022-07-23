@@ -6,6 +6,8 @@ switch (side player) do
     case WEST:
     {
         player createDiaryRecord ["Diary", ["Signals","
+*Set channel only works after briefing at the moment*
+<br/><br/>
 ALPHA - Company command<br/>PRC343 Ch 1 - <execute expression='private _personalRadio = [""ACRE_PRC343""] call acre_api_fnc_getRadioByType; [_personalRadio, 1] call acre_api_fnc_setradioChannel;'>Set PRC343 Ch 1</execute><br/><br/>
 BRAVO - Assault Squad 1<br/>PRC343 Ch 2 - <execute expression='private _personalRadio = [""ACRE_PRC343""] call acre_api_fnc_getRadioByType; [_personalRadio, 2] call acre_api_fnc_setradioChannel;'>Set PRC343 Ch 2</execute><br/><br/>
 CHARLIE - Assault Squad 2<br/>PRC343 Ch 3 - <execute expression='private _personalRadio = [""ACRE_PRC343""] call acre_api_fnc_getRadioByType; [_personalRadio, 3] call acre_api_fnc_setradioChannel;'>Set PRC343 Ch 3</execute><br/><br/>

@@ -44,9 +44,10 @@ for [{ _i = 0 }, { _i < 5 }, { _i = _i + 1 }] do {
 			
 			// create 3 crew
 			for [{ _c = 0 }, { _c < 3 }, { _c = _c + 1 }] do {
-				private _pos = selectRandom (_buildingWith3Positions buildingPos -1);
-				_pos = getPos _tank;
-				_crew = _crewGroup createUnit ["UK3CB_KDF_O_CREW", _pos, [], 0, "NONE"];
+				private _pos2 = selectRandom (_buildingWith3Positions buildingPos -1);
+				_crew = _crewGroup createUnit ["UK3CB_KDF_O_CREW", _pos2, [], 0, "CAN_COLLIDE"];
+				_crew setPos _pos2;
+				_crew disableAI "PATH";
 				// hint str _crew;
 				[_crew] joinSilent _crewGroup;
 				if (_c == 2) then {
@@ -56,9 +57,9 @@ for [{ _i = 0 }, { _i < 5 }, { _i = _i + 1 }] do {
 				// Add trigger to move to tank once "aware / combat" state
 
 				if (A455_DEBUG_MODE) then {
-					private _marker = createMarker [("tanktracker_" + str random 10000000), _pos]; // not visible yet.
+					private _marker = createMarker [("tankcrew_tracker_" + str random 10000000), _pos2]; // not visible yet.
 					_marker setMarkerType "hd_dot";
-					_marker setMarkerColor "ColorGreen";
+					_marker setMarkerColor "ColorKhaki";
 					_marker setMarkerText (typeOf _crew);
 				};
 			};
@@ -70,6 +71,7 @@ for [{ _i = 0 }, { _i < 5 }, { _i = _i + 1 }] do {
 				A455_isWESTDetected = false;
 				A455_WESTUnit = objnull;
 				while {!A455_isWESTDetected} do {
+					sleep 60;
 					{
 						if (alive _x && EAST knowsAbout _x >= 0.8) then {
 							A455_isWESTDetected = true;
@@ -80,13 +82,12 @@ for [{ _i = 0 }, { _i < 5 }, { _i = _i + 1 }] do {
 							};
 						}
 					} forEach units WEST;
-					sleep 60;
 				};
 				
 				units _crewGroup allowGetIn true;
 				units _crewGroup doFollow leader _crewGroup;
 				units _crewGroup orderGetIn true;
-
+				{ _x  enableAI "PATH"; } forEach units _crewGroup;
 				
 				units _crewGroup doFollow leader _crewGroup;
 				private _wp = _crewGroup addWaypoint [getPos _tank, 0];

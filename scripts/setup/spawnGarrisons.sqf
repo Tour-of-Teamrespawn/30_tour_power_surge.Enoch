@@ -11,8 +11,9 @@ private _totalUnits = 0;
 		// Create Sign_Sphere100cm_F at each building Position
 		// _veh =  createVehicle ["Sign_Sphere100cm_F", _x, [], 0, "CAN_COLLIDE"];
 			// for 50% of buildings
-		if (random 1 > _spawnRate) then {
+		if (_spawnRate > random 1) then {
 			private ["_availableGroups","_chosenGroup"];
+			_availableGroups = [];
 
 			// dynamically get a group of the correct size(ish) for the building
 			private _unitSize = 0;
@@ -58,6 +59,6 @@ private _totalUnits = 0;
 if (A455_DEBUG_MODE) then {
 	hint ("Total garrisoned units: " + str _totalUnits + "\nTotal EAST units: " + str count units EAST);
 	{
-		private _veh =  createVehicle ["Sign_Sphere100cm_F", (getPos _x), [], 0, "CAN_COLLIDE"];
+		private _veh =  createVehicle ["Sign_Sphere100cm_F", (getPosATL _x), [], 0, "CAN_COLLIDE"];
 	} foreach units EAST;
 };

@@ -15,11 +15,11 @@ class Header
 
 // Mission Loading Info
 author = "Andy455 [Tour]";
-onLoadName = "30 [Tour] Power Surge v0.26";
+onLoadName = "30 [Tour] Power Surge v0.27";
 onLoadMission = "Royal marines assault a fortified power station"; // name of mission in MP Select screen
 onLoadMissionTime = true;
 loadScreen = "img\loadingScreen.paa"; // img\loadScreen.paa
-briefingName = "30 [Tour] Power Surge v0.26";
+briefingName = "30 [Tour] Power Surge v0.27";
 enableItemsDropping = 0;
 disabledAI = 1;
 enableDebugConsole[] = { "76561198000647052" };
@@ -186,6 +186,45 @@ class CfgRadio
 	};
 };
 
+class CfgSounds
+{
+	sounds[] = {};
+   
+	class TOUR_key_noise
+	{
+		name = "TOUR_key_noise";
+		sound[] = {"sounds\TOUR_key_noise.wav", 1, 1};
+		titles[] = {};
+	};
+	class TOUR_introMusic
+	{
+		name = "TOUR_introMusic";
+		sound[] = {"sounds\TOUR_introMusic.ogg", 1, 1};
+		titles[] = {};
+	};
+};
+
+class CfgFunctions
+{
+	class A455
+	{
+		class General
+		{
+			class infoText {};
+		};
+		class Spawning
+		{
+			class randomPatrol {};
+		};
+		class Tasks
+		{
+			class failNCTask {};
+			class seizedPlant {};
+		};
+	};
+};
+
+
 // class CfgORBAT
 // {
 // 	class O_3co
@@ -291,6 +330,7 @@ class CfgRadio
 // 		// };
 // 	};
 // };
+
 
 
 
