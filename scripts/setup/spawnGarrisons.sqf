@@ -52,10 +52,6 @@ private _totalUnits = 0;
 	};
 } foreach (nearestObjects [garrisonCentre, ["House", "Building"], 150]);
 
-
-
-
-
 if (A455_DEBUG_MODE) then {
 	hint ("Total garrisoned units: " + str _totalUnits + "\nTotal EAST units: " + str count units EAST);
 	{
