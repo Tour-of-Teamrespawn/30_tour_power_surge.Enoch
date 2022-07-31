@@ -1,3 +1,5 @@
+A455_INTRO_DONE = false;
+publicVariable "A455_INTRO_DONE";
 [A455_ENEMY_STRENGTH] execVM "scripts\setup\spawnGarrisons.sqf";
 [A455_ENEMY_STRENGTH] execVM "scripts\setup\spawnPatrols.sqf";
 [A455_ENEMY_STRENGTH, 5, 15] execVM "scripts\setup\spawnVehicles.sqf";
@@ -19,6 +21,10 @@ TOUR_init_complete = true;
 publicVariable "TOUR_init_complete";
 A455_HELIS_CREATED = false;
 publicVariable "A455_HELIS_CREATED";
+
+waitUntil { time > 60 };
+A455_INTRO_DONE = true;
+publicVariable "A455_INTRO_DONE";
 
 waitUntil {!isNil "TOUR_RC_WEST_DEAD"};
 waitUntil {!TOUR_RC_WEST_DEAD};

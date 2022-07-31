@@ -62,7 +62,7 @@ if (isMultiplayer) then
 	TOUR_TOD = 0;
 
 	//Debug mode
-	A455_DEBUG_MODE = true;
+	A455_DEBUG_MODE = false;
 
 	//Enemy strength
 	A455_ENEMY_STRENGTH = 0.5;

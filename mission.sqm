@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=13912;
+		nextID=13914;
 	};
 	class MarkerIDProvider
 	{
@@ -16,13 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=759;
+		nextID=795;
 	};
 	class Camera
 	{
-		pos[]={11897.749,158.215,5267.9282};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710671,0.70710683};
+		pos[]={11895.091,147.88873,5273.0527};
+		dir[]={0.24512391,-0.54387701,0.80256605};
+		up[]={0.15886895,0.83916485,0.52015662};
+		aside[]={0.95638645,0,-0.29210454};
 	};
 };
 binarizationWanted=0;
@@ -121,13 +122,9 @@ addons[]=
 	"UK3CB_BAF_Equipment_Glasses",
 	"ace_trenches",
 	"acre_main",
-	"ace_microdagr",
-	"ace_parachute",
-	"ace_mk6mortar",
-	"ace_tagging",
-	"ace_vector",
 	"A3_Weapons_F_Explosives",
 	"ace_explosives",
+	"ace_tagging",
 	"rhsusf_c_weapons",
 	"UK3CB_BAF_Vehicles_Weapons",
 	"UK3CB_BAF_Equipment_Berets",
@@ -140,6 +137,10 @@ addons[]=
 	"ace_compat_rhs_usf3",
 	"UK3CB_BAF_Units_Common",
 	"UK3CB_BAF_Weapons_Accessories",
+	"ace_microdagr",
+	"ace_parachute",
+	"ace_mk6mortar",
+	"ace_vector",
 	"UK3CB_BAF_Equipment_Soflam",
 	"ace_kestrel4500",
 	"ace_atragmx",
@@ -621,115 +622,115 @@ class AddonsMetaData
 		};
 		class Item70
 		{
-			className="ace_microdagr";
-			name="ACE3 - MicroDAGR";
+			className="ace_explosives";
+			name="ACE3 - Explosives";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
 		class Item71
-		{
-			className="ace_parachute";
-			name="ACE3 - Parachute";
-			author="ACE-Team";
-			url="https://ace3.acemod.org/";
-		};
-		class Item72
-		{
-			className="ace_mk6mortar";
-			name="ACE3 - Mk6 Mortar";
-			author="ACE-Team";
-			url="https://ace3.acemod.org/";
-		};
-		class Item73
 		{
 			className="ace_tagging";
 			name="ACE3 - Tagging";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item74
-		{
-			className="ace_vector";
-			name="ACE3 - Vector";
-			author="ACE-Team";
-			url="https://ace3.acemod.org/";
-		};
-		class Item75
-		{
-			className="ace_explosives";
-			name="ACE3 - Explosives";
-			author="ACE-Team";
-			url="https://ace3.acemod.org/";
-		};
-		class Item76
+		class Item72
 		{
 			className="rhsusf_c_weapons";
 			name="RHSUSF Weapons & Accessories";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
-		class Item77
+		class Item73
 		{
 			className="UK3CB_BAF_Vehicles_Weapons";
 			name="3CB BAF Vehicles - Weapons";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
 		};
-		class Item78
+		class Item74
 		{
 			className="UK3CB_BAF_Equipment_Berets";
 			name="3CB BAF Equipment - Berets";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
 		};
-		class Item79
+		class Item75
 		{
 			className="UK3CB_BAF_Equipment_ACE";
 			name="3CB BAF Equipment - Ace3";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
 		};
-		class Item80
+		class Item76
 		{
 			className="ace_minedetector";
 			name="ACE3 - Mine Detector";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item81
+		class Item77
 		{
 			className="ace_goggles";
 			name="ACE3 - Goggles";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item82
+		class Item78
 		{
 			className="UK3CB_BAF_Weapons_L7";
 			name="3CB BAF Weapons - L7";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
 		};
-		class Item83
+		class Item79
 		{
 			className="ace_compat_rhs_usf3";
 			name="ACE3 - RHS USF Compatibility";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item84
+		class Item80
 		{
 			className="UK3CB_BAF_Units_Common";
 			name="3CB BAF Units - Common";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
 		};
-		class Item85
+		class Item81
 		{
 			className="UK3CB_BAF_Weapons_Accessories";
 			name="3CB BAF Weapons - Accessories";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
+		};
+		class Item82
+		{
+			className="ace_microdagr";
+			name="ACE3 - MicroDAGR";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item83
+		{
+			className="ace_parachute";
+			name="ACE3 - Parachute";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item84
+		{
+			className="ace_mk6mortar";
+			name="ACE3 - Mk6 Mortar";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item85
+		{
+			className="ace_vector";
+			name="ACE3 - Vector";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
 		};
 		class Item86
 		{
@@ -7732,7 +7733,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={8549.2637,105.03783,8798.9834};
-						angles[]={0,3.1597846,-0};
+						angles[]={0,3.1597846,0};
 					};
 					side="East";
 					flags=7;
@@ -7750,7 +7751,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={8553.1914,105.02406,8800.7051};
-						angles[]={0,2.9587529,-0};
+						angles[]={0,2.9587529,0};
 					};
 					side="East";
 					flags=5;
@@ -7769,7 +7770,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={8555.1914,104.95687,8800.7051};
-						angles[]={0,2.9471223,-0};
+						angles[]={0,2.9471223,0};
 					};
 					side="East";
 					flags=5;
@@ -7786,7 +7787,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={8557.1914,104.84753,8800.7051};
-						angles[]={0,3.097959,-0};
+						angles[]={0,3.097959,0};
 					};
 					side="East";
 					flags=5;
@@ -20668,6 +20669,7 @@ class Mission
 			};
 			id=12397;
 			type="Land_BagFenceLong";
+			atlOffset=0.00011444092;
 		};
 		class Item491
 		{
@@ -21485,7 +21487,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11489.069,85.814888,6966.2432};
-				angles[]={-0,2.918592,-0};
+				angles[]={0,2.918592,0};
 			};
 			side="Empty";
 			flags=4;
@@ -21822,7 +21824,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="this allowDamage false;";
+						init="this allowDamage false; group this setGroupIdGlobal [""HQ""];";
 						name="HQ";
 					};
 					id=13318;
@@ -21875,6 +21877,29 @@ class Mission
 			{
 			};
 			id=13317;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression=" if (isNil 'CBA_fnc_setCallsign') then { _this setGroupID [_value]; } else { [_this, _value] call CBA_fnc_setCallsign; }; ";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="HQ";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item557
 		{
@@ -21971,15 +21996,15 @@ class Mission
 					class PositionInfo
 					{
 						position[]={11900.18,133.12595,5293.5928};
-						angles[]={0.059131995,4.0394421,6.2400126};
+						angles[]={0.059131756,4.0394421,6.240006};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						rank="CAPTAIN";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""ALPHA"", true]}; ";
-						description="1: Platoon commander";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""ALPHA"", true]; group this setGroupIdGlobal [""ALPHA""]; }; ";
+						description="1: Platoon commander@ALPHA";
 						isPlayer=1;
 						isPlayable=1;
 						class Inventory
@@ -22377,17 +22402,16 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={11899.334,133.06018,5295.5449};
-						angles[]={0.039985489,3.9051743,6.2703919};
+						position[]={11901.945,133.10164,5293.1279};
+						angles[]={0,3.9978859,0};
 					};
 					side="West";
-					flags=4;
+					flags=5;
 					class Attributes
 					{
 						skill=0.40000001;
-						rank="CORPORAL";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""ALPHA"", true]}; ";
-						description="2: Mortar Fire Controller";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""ALPHA"", true]; group this setGroupIdGlobal [""ALPHA""];};  ";
+						description="2: Platoon Medic@ALPHA";
 						isPlayable=1;
 						class Inventory
 						{
@@ -22416,11 +22440,11 @@ class Mission
 							};
 							class uniform
 							{
-								typeName="UK3CB_BAF_U_JumperUniform_DPMW";
+								typeName="UK3CB_BAF_U_Smock_DPMW";
 								isBackpack=0;
 								class MagazineCargo
 								{
-									items=7;
+									items=8;
 									class Item0
 									{
 										name="UK3CB_BAF_9_13Rnd";
@@ -22463,10 +22487,49 @@ class Mission
 										count=1;
 										ammoLeft=1;
 									};
+									class Item7
+									{
+										name="UK3CB_BAF_SmokeShellPurple";
+										count=1;
+										ammoLeft=1;
+									};
+								};
+							};
+							class vest
+							{
+								typeName="UK3CB_BAF_V_PLCE_Webbing_Plate_OLI";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=4;
+									class Item0
+									{
+										name="HandGrenade";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item1
+									{
+										name="UK3CB_BAF_SmokeShellPurple";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item2
+									{
+										name="UK3CB_BAF_762_20Rnd";
+										count=3;
+										ammoLeft=20;
+									};
+									class Item3
+									{
+										name="UK3CB_BAF_762_20Rnd_T";
+										count=1;
+										ammoLeft=20;
+									};
 								};
 								class ItemCargo
 								{
-									items=3;
+									items=11;
 									class Item0
 									{
 										name="ACE_EarPlugs";
@@ -22480,162 +22543,79 @@ class Mission
 									class Item2
 									{
 										name="ACE_elasticBandage";
-										count=1;
+										count=4;
 									};
-								};
-							};
-							class vest
-							{
-								typeName="UK3CB_BAF_V_PLCE_Webbing_Plate_DPMW";
-								isBackpack=0;
-								class WeaponCargo
-								{
-									items=1;
-									class Item0
-									{
-										name="ACE_Vector";
-										count=1;
-									};
-								};
-								class MagazineCargo
-								{
-									items=3;
-									class Item0
-									{
-										name="HandGrenade";
-										count=1;
-										ammoLeft=1;
-									};
-									class Item1
-									{
-										name="UK3CB_BAF_762_20Rnd";
-										count=3;
-										ammoLeft=20;
-									};
-									class Item2
-									{
-										name="UK3CB_BAF_762_20Rnd_T";
-										count=2;
-										ammoLeft=20;
-									};
-								};
-								class ItemCargo
-								{
-									items=13;
-									class Item0
-									{
-										name="ACE_elasticBandage";
-										count=3;
-									};
-									class Item1
+									class Item3
 									{
 										name="ACE_packingBandage";
 										count=2;
 									};
-									class Item2
+									class Item4
 									{
 										name="ACE_tourniquet";
 										count=2;
 									};
-									class Item3
+									class Item5
 									{
 										name="ACE_morphine";
 										count=3;
 									};
-									class Item4
+									class Item6
 									{
 										name="ACE_epinephrine";
 										count=3;
 									};
-									class Item5
+									class Item7
 									{
 										name="ACE_MapTools";
 										count=1;
 									};
-									class Item6
+									class Item8
 									{
 										name="ACE_Flashlight_XL50";
 										count=1;
 									};
-									class Item7
+									class Item9
 									{
 										name="ACE_CableTie";
 										count=2;
 									};
-									class Item8
-									{
-										name="ACE_IR_Strobe_Item";
-										count=1;
-									};
-									class Item9
-									{
-										name="ACE_microDAGR";
-										count=1;
-									};
 									class Item10
 									{
-										name="ACE_Altimeter";
-										count=1;
-									};
-									class Item11
-									{
-										name="ACE_RangeTable_82mm";
-										count=1;
-									};
-									class Item12
-									{
-										name="ACE_SpraypaintBlue";
+										name="ACE_IR_Strobe_Item";
 										count=1;
 									};
 								};
 							};
 							class backpack
 							{
-								typeName="UK3CB_BAF_B_Bergen_OLI_SL_A";
+								typeName="UK3CB_BAF_B_Carryall_OLI";
 								isBackpack=1;
 								class MagazineCargo
 								{
-									items=6;
+									items=3;
 									class Item0
-									{
-										name="UK3CB_BAF_762_20Rnd_T";
-										count=1;
-										ammoLeft=20;
-									};
-									class Item1
-									{
-										name="UK3CB_BAF_762_20Rnd";
-										count=4;
-										ammoLeft=20;
-									};
-									class Item2
-									{
-										name="B_IR_Grenade";
-										count=1;
-										ammoLeft=1;
-									};
-									class Item3
 									{
 										name="UK3CB_BAF_SmokeShell";
 										count=2;
 										ammoLeft=1;
 									};
-									class Item4
+									class Item1
 									{
-										name="UK3CB_BAF_SmokeShellRed";
-										count=4;
-										ammoLeft=1;
-									};
-									class Item5
-									{
-										name="HandGrenade";
+										name="UK3CB_BAF_SmokeShellPurple";
 										count=2;
 										ammoLeft=1;
+									};
+									class Item2
+									{
+										name="UK3CB_BAF_762_20Rnd";
+										count=4;
+										ammoLeft=20;
 									};
 								};
 								class ItemCargo
 								{
-									items=10;
+									items=14;
 									class Item0
 									{
 										name="UK3CB_BAF_G_Tactical_Clear";
@@ -22643,47 +22623,67 @@ class Mission
 									};
 									class Item1
 									{
-										name="ACE_quikclot";
-										count=2;
+										name="ACE_elasticBandage";
+										count=24;
 									};
 									class Item2
 									{
-										name="ACE_elasticBandage";
-										count=4;
+										name="ACE_packingBandage";
+										count=12;
 									};
 									class Item3
 									{
-										name="ACE_packingBandage";
-										count=2;
+										name="ACE_quikclot";
+										count=12;
 									};
 									class Item4
 									{
 										name="ACE_splint";
-										count=2;
+										count=10;
 									};
 									class Item5
 									{
 										name="ACE_tourniquet";
-										count=2;
+										count=12;
 									};
 									class Item6
 									{
 										name="ACE_morphine";
-										count=2;
+										count=10;
 									};
 									class Item7
 									{
 										name="ACE_epinephrine";
-										count=4;
+										count=22;
 									};
 									class Item8
 									{
-										name="ACE_salineIV_500";
-										count=1;
+										name="ACE_adenosine";
+										count=8;
 									};
 									class Item9
 									{
-										name="ACE_EntrenchingTool";
+										name="ACE_salineIV";
+										count=4;
+									};
+									class Item10
+									{
+										name="ACE_salineIV_500";
+										count=8;
+									};
+									class Item11
+									{
+										name="ACE_personalAidKit";
+										count=1;
+									};
+									class Item12
+									{
+										name="ACE_surgicalKit";
+										count=1;
+									};
+									class Item13
+									{
+										name="ACE_bodyBag";
 										count=1;
 									};
 								};
@@ -22692,12 +22692,11 @@ class Mission
 							compass="ItemCompass";
 							watch="ItemWatch";
 							radio="ItemRadio";
-							headgear="UK3CB_BAF_H_Mk6_DPMW_A";
+							headgear="UK3CB_BAF_H_Mk6_DPMW_F";
 						};
 					};
-					id=13486;
-					type="UK3CB_BAF_MFC_Smock_DPMW";
-					atlOffset=1.5258789e-005;
+					id=13913;
+					type="UK3CB_BAF_Medic_Smock_DPMW";
 					class CustomAttributes
 					{
 						class Attribute0
@@ -22734,7 +22733,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01ENGB";
+									value="Male04ENGB";
 								};
 							};
 						};
@@ -22753,7 +22752,7 @@ class Mission
 											"SCALAR"
 										};
 									};
-									value=1.05;
+									value=0.98000002;
 								};
 							};
 						};
@@ -22866,8 +22865,8 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]};  ";
-						description="1: Section Commander";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]; group this setGroupIdGlobal [""BRAVO""];};  ";
+						description="1: Section Commander@BRAVO";
 						isPlayable=1;
 						class Inventory
 						{
@@ -23287,15 +23286,15 @@ class Mission
 					class PositionInfo
 					{
 						position[]={11894.599,133.3371,5292.9346};
-						angles[]={0.063911393,0.78628826,6.2575932};
+						angles[]={0.063913956,0.78628826,6.2575989};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]};  ";
-						description="2: Rifleman AT M72";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]; group this setGroupIdGlobal [""BRAVO""];};  ";
+						description="2: Rifleman AT M72@BRAVO";
 						isPlayable=1;
 						class Inventory
 						{
@@ -23694,8 +23693,8 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]};";
-						description="3: Explosive Specialist";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]; group this setGroupIdGlobal [""BRAVO""];};";
+						description="3: Explosive Specialist@BRAVO";
 						isPlayable=1;
 						class Inventory
 						{
@@ -24116,8 +24115,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]};  ";
-						description="4: Engineer";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]; group this setGroupIdGlobal [""BRAVO""];};  ";
+						description="4: Engineer@BRAVO";
 						isPlayable=1;
 						class Inventory
 						{
@@ -24570,8 +24569,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]};  ";
-						description="5: Combat Medic";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]; group this setGroupIdGlobal [""BRAVO""];};  ";
+						description="5: Combat Medic@BRAVO";
 						isPlayable=1;
 						class Inventory
 						{
@@ -24991,8 +24990,8 @@ class Mission
 					{
 						skill=0.44999999;
 						rank="CORPORAL";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]};  ";
-						description="6: Fire Team Leader";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]; group this setGroupIdGlobal [""BRAVO""];};  ";
+						description="6: Fire Team Leader@BRAVO";
 						isPlayable=1;
 						class Inventory
 						{
@@ -25419,8 +25418,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]};  ";
-						description="7: GPMG";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]; group this setGroupIdGlobal [""BRAVO""];};  ";
+						description="7: GPMG@BRAVO";
 						isPlayable=1;
 						class Inventory
 						{
@@ -25804,8 +25803,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]};  ";
-						description="8: GPMG Asst.";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""BRAVO"", true]; group this setGroupIdGlobal [""BRAVO""];};  ";
+						description="8: GPMG Asst.@BRAVO";
 						isPlayable=1;
 						class Inventory
 						{
@@ -26238,8 +26237,8 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]};  ";
-						description="1: Section Commander";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]; group this setGroupIdGlobal [""CHARLIE""];};  ";
+						description="1: Section Commander@CHARLIE";
 						isPlayable=1;
 						class Inventory
 						{
@@ -26666,8 +26665,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]};  ";
-						description="2: AT Carl Gustav";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]; group this setGroupIdGlobal [""CHARLIE""];};  ";
+						description="2: AT Carl Gustav@CHARLIE";
 						isPlayable=1;
 						class Inventory
 						{
@@ -27067,8 +27066,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]};  ";
-						description="3: Asst. AT Carl Gustav";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]; group this setGroupIdGlobal [""CHARLIE""];};  ";
+						description="3: Asst. AT Carl Gustav@CHARLIE";
 						isPlayable=1;
 						class Inventory
 						{
@@ -27452,8 +27451,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]};  ";
-						description="4: Engineer";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]; group this setGroupIdGlobal [""CHARLIE""];};  ";
+						description="4: Engineer@CHARLIE";
 						isPlayable=1;
 						class Inventory
 						{
@@ -27893,8 +27892,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]};  ";
-						description="5: Combat Medic";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]; group this setGroupIdGlobal [""CHARLIE""];};  ";
+						description="5: Combat Medic@CHARLIE";
 						isPlayable=1;
 						class Inventory
 						{
@@ -28314,8 +28313,8 @@ class Mission
 					{
 						skill=0.44999999;
 						rank="CORPORAL";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]};  ";
-						description="6: Fire Team Leader";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]; group this setGroupIdGlobal [""CHARLIE""];};  ";
+						description="6: Fire Team Leader@CHARLIE";
 						isPlayable=1;
 						class Inventory
 						{
@@ -28742,8 +28741,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]};  ";
-						description="7: GPMG";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]; group this setGroupIdGlobal [""CHARLIE""];};  ";
+						description="7: GPMG@CHARLIE";
 						isPlayable=1;
 						class Inventory
 						{
@@ -29127,8 +29126,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]};  ";
-						description="8: GPMG Asst.";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""CHARLIE"", true]; group this setGroupIdGlobal [""CHARLIE""];};  ";
+						description="8: GPMG Asst.@CHARLIE";
 						isPlayable=1;
 						class Inventory
 						{
@@ -29561,8 +29560,8 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]};  ";
-						description="1: Section Commander";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]; group this setGroupIdGlobal [""DELTA""];};  ";
+						description="1: Section Commander@DELTA";
 						isPlayable=1;
 						class Inventory
 						{
@@ -29989,8 +29988,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]};  ";
-						description="2: AT Carl Gustav";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]; group this setGroupIdGlobal [""DELTA""];};  ";
+						description="2: AT Carl Gustav@DELTA";
 						isPlayable=1;
 						class Inventory
 						{
@@ -30390,8 +30389,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]};  ";
-						description="3: Asst. AT Carl Gustav";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]; group this setGroupIdGlobal [""DELTA""];};  ";
+						description="3: Asst. AT Carl Gustav@DELTA";
 						isPlayable=1;
 						class Inventory
 						{
@@ -30775,8 +30774,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]};  ";
-						description="4: Marksman";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]; group this setGroupIdGlobal [""DELTA""];};  ";
+						description="4: Marksman@DELTA";
 						isPlayable=1;
 						class Inventory
 						{
@@ -31173,8 +31172,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]};  ";
-						description="5: Combat Medic";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]; group this setGroupIdGlobal [""DELTA""];};  ";
+						description="5: Combat Medic@DELTA";
 						isPlayable=1;
 						class Inventory
 						{
@@ -31594,8 +31593,8 @@ class Mission
 					{
 						skill=0.44999999;
 						rank="CORPORAL";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]};  ";
-						description="6: Fire Team Leader";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]; group this setGroupIdGlobal [""DELTA""];};  ";
+						description="6: Fire Team Leader@DELTA";
 						isPlayable=1;
 						class Inventory
 						{
@@ -32022,8 +32021,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]};  ";
-						description="7: GPMG";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]; group this setGroupIdGlobal [""DELTA""];};  ";
+						description="7: GPMG@DELTA";
 						isPlayable=1;
 						class Inventory
 						{
@@ -32407,8 +32406,8 @@ class Mission
 					class Attributes
 					{
 						skill=0.40000001;
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]};  ";
-						description="8: GPMG Asst.";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""DELTA"", true]; group this setGroupIdGlobal [""DELTA""];};  ";
+						description="8: GPMG Asst.@DELTA";
 						isPlayable=1;
 						class Inventory
 						{
@@ -32833,70 +32832,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={11889.981,133.12303,5297.8569};
-						angles[]={0.047964405,0.79129738,6.2655869};
-					};
-					side="West";
-					flags=6;
-					class Attributes
-					{
-						rank="SERGEANT";
-						init="if (player == this) then {this addItem ""ACE_Kestrel4500""; this addItem ""UK3CB_BAF_L16_RangeTable"";}; if (isServer) then {this setVariable [""A455_GROUP"", ""ECHO"", true]};  ";
-						description="1: Mortar Team Leader";
-						isPlayable=1;
-					};
-					id=13515;
-					type="UK3CB_BAF_FT_Smock_DPMW";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male03ENGB";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=0.99000001;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={11889.979,133.3308,5295.7227};
-						angles[]={0.076649368,0.78075558,6.2368193};
+						angles[]={0.076654866,0.78075558,6.2368116};
 					};
 					side="West";
 					flags=4;
@@ -32904,8 +32841,8 @@ class Mission
 					{
 						skill=0.40000001;
 						rank="CORPORAL";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""ECHO"", true]};  ";
-						description="2: Mortar gunner";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""ECHO"", true]; group this setGroupIdGlobal [""ECHO""];};  ";
+						description="2: Mortar gunner@ECHO";
 						isPlayable=1;
 						class Inventory
 						{
@@ -33282,6 +33219,450 @@ class Mission
 						nAttributes=6;
 					};
 				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={11890.039,133.13121,5297.665};
+						angles[]={0.047961645,0.67729247,6.2655926};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.40000001;
+						rank="CORPORAL";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""ECHO"", true]; group this setGroupIdGlobal [""ECHO""];}; ";
+						description="1: Mortar Fire Controller@ECHO";
+						isPlayable=1;
+						class Inventory
+						{
+							class primaryWeapon
+							{
+								name="UK3CB_BAF_L1A1";
+								firemode="UK3CB_BAF_L1A1:Single";
+								class primaryMuzzleMag
+								{
+									name="UK3CB_BAF_762_20Rnd";
+									ammoLeft=20;
+								};
+							};
+							class handgun
+							{
+								name="UK3CB_BAF_L9A1";
+								class primaryMuzzleMag
+								{
+									name="UK3CB_BAF_9_13Rnd";
+									ammoLeft=13;
+								};
+							};
+							class binocular
+							{
+								name="Binocular";
+							};
+							class uniform
+							{
+								typeName="UK3CB_BAF_U_JumperUniform_DPMW";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=7;
+									class Item0
+									{
+										name="UK3CB_BAF_9_13Rnd";
+										count=1;
+										ammoLeft=13;
+									};
+									class Item1
+									{
+										name="Chemlight_green";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item2
+									{
+										name="Chemlight_blue";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item3
+									{
+										name="UK3CB_BAF_SmokeShellBlue";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item4
+									{
+										name="UK3CB_BAF_SmokeShellRed";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item5
+									{
+										name="UK3CB_BAF_SmokeShell";
+										count=2;
+										ammoLeft=1;
+									};
+									class Item6
+									{
+										name="HandGrenade";
+										count=1;
+										ammoLeft=1;
+									};
+								};
+								class ItemCargo
+								{
+									items=3;
+									class Item0
+									{
+										name="ACE_EarPlugs";
+										count=1;
+									};
+									class Item1
+									{
+										name="ACE_quikclot";
+										count=2;
+									};
+									class Item2
+									{
+										name="ACE_elasticBandage";
+										count=1;
+									};
+								};
+							};
+							class vest
+							{
+								typeName="UK3CB_BAF_V_PLCE_Webbing_Plate_DPMW";
+								isBackpack=0;
+								class WeaponCargo
+								{
+									items=1;
+									class Item0
+									{
+										name="ACE_Vector";
+										count=1;
+									};
+								};
+								class MagazineCargo
+								{
+									items=3;
+									class Item0
+									{
+										name="HandGrenade";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item1
+									{
+										name="UK3CB_BAF_762_20Rnd";
+										count=3;
+										ammoLeft=20;
+									};
+									class Item2
+									{
+										name="UK3CB_BAF_762_20Rnd_T";
+										count=2;
+										ammoLeft=20;
+									};
+								};
+								class ItemCargo
+								{
+									items=13;
+									class Item0
+									{
+										name="ACE_elasticBandage";
+										count=3;
+									};
+									class Item1
+									{
+										name="ACE_packingBandage";
+										count=2;
+									};
+									class Item2
+									{
+										name="ACE_tourniquet";
+										count=2;
+									};
+									class Item3
+									{
+										name="ACE_morphine";
+										count=3;
+									};
+									class Item4
+									{
+										name="ACE_epinephrine";
+										count=3;
+									};
+									class Item5
+									{
+										name="ACE_MapTools";
+										count=1;
+									};
+									class Item6
+									{
+										name="ACE_Flashlight_XL50";
+										count=1;
+									};
+									class Item7
+									{
+										name="ACE_CableTie";
+										count=2;
+									};
+									class Item8
+									{
+										name="ACE_IR_Strobe_Item";
+										count=1;
+									};
+									class Item9
+									{
+										name="ACE_microDAGR";
+										count=1;
+									};
+									class Item10
+									{
+										name="ACE_Altimeter";
+										count=1;
+									};
+									class Item11
+									{
+										name="ACE_RangeTable_82mm";
+										count=1;
+									};
+									class Item12
+									{
+										name="ACE_SpraypaintBlue";
+										count=1;
+									};
+								};
+							};
+							class backpack
+							{
+								typeName="UK3CB_BAF_B_Bergen_OLI_SL_A";
+								isBackpack=1;
+								class MagazineCargo
+								{
+									items=6;
+									class Item0
+									{
+										name="UK3CB_BAF_762_20Rnd_T";
+										count=1;
+										ammoLeft=20;
+									};
+									class Item1
+									{
+										name="UK3CB_BAF_762_20Rnd";
+										count=4;
+										ammoLeft=20;
+									};
+									class Item2
+									{
+										name="B_IR_Grenade";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item3
+									{
+										name="UK3CB_BAF_SmokeShell";
+										count=2;
+										ammoLeft=1;
+									};
+									class Item4
+									{
+										name="UK3CB_BAF_SmokeShellRed";
+										count=4;
+										ammoLeft=1;
+									};
+									class Item5
+									{
+										name="HandGrenade";
+										count=2;
+										ammoLeft=1;
+									};
+								};
+								class ItemCargo
+								{
+									items=10;
+									class Item0
+									{
+										name="UK3CB_BAF_G_Tactical_Clear";
+										count=1;
+									};
+									class Item1
+									{
+										name="ACE_quikclot";
+										count=2;
+									};
+									class Item2
+									{
+										name="ACE_elasticBandage";
+										count=4;
+									};
+									class Item3
+									{
+										name="ACE_packingBandage";
+										count=2;
+									};
+									class Item4
+									{
+										name="ACE_splint";
+										count=2;
+									};
+									class Item5
+									{
+										name="ACE_tourniquet";
+										count=2;
+									};
+									class Item6
+									{
+										name="ACE_morphine";
+										count=2;
+									};
+									class Item7
+									{
+										name="ACE_epinephrine";
+										count=4;
+									};
+									class Item8
+									{
+										name="ACE_salineIV_500";
+										count=1;
+									};
+									class Item9
+									{
+										name="ACE_EntrenchingTool";
+										count=1;
+									};
+								};
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							radio="ItemRadio";
+							headgear="UK3CB_BAF_H_Mk6_DPMW_A";
+						};
+					};
+					id=13486;
+					type="UK3CB_BAF_MFC_Smock_DPMW";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="uk3cb_enable_loadout";
+							expression="if !(_value) then { _this call uk3cb_baf_units_common_fnc_disable_loadout; };";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male01ENGB";
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.05;
+								};
+							};
+						};
+						class Attribute3
+						{
+							property="uk3cb_force_loadout";
+							expression="if (_value) then { _this call uk3cb_baf_units_common_fnc_force_loadout; };";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute4
+						{
+							property="uk3cb_enable_randomisation";
+							expression="if !(_value) then { _this call uk3cb_baf_units_common_fnc_disable_randomize; };";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute5
+						{
+							property="unitInsignia";
+							expression="[_this,_value] call BIS_fnc_setUnitInsignia;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="UK3CB_BAF_Insignia_RMDagger_1";
+								};
+							};
+						};
+						nAttributes=6;
+					};
+				};
 			};
 			class Attributes
 			{
@@ -33331,8 +33712,8 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""FOXTROT"", true]};  ";
-						description="1: Spotter";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""FOXTROT"", true]; group this setGroupIdGlobal [""FOXTROT""];};  ";
+						description="1: Spotter@FOXTROT";
 						isPlayable=1;
 						class Inventory
 						{
@@ -33765,8 +34146,8 @@ class Mission
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="if (isServer) then {this setVariable [""A455_GROUP"", ""FOXTROT"", true]};  ";
-						description="2: Sniper (L115)";
+						init="if (isServer) then {this setVariable [""A455_GROUP"", ""FOXTROT"", true]; group this setGroupIdGlobal [""FOXTROT""];};  ";
+						description="2: Sniper (L115)@FOXTROT";
 						isPlayable=1;
 						class Inventory
 						{
@@ -34660,7 +35041,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11451.977,85.497032,7178.5493};
-				angles[]={-0,4.5482912,0};
+				angles[]={0,4.5482912,0};
 			};
 			name="stc_h_pos_0";
 			id=13646;
@@ -34672,7 +35053,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11459.692,85.497032,7172.9009};
-				angles[]={-0,1.4306118,0};
+				angles[]={0,1.4306118,0};
 			};
 			name="stc_h_pos_1";
 			id=13648;
@@ -35588,7 +35969,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11591.227,83.827507,7124.3018};
-				angles[]={-0,1.3573834,0};
+				angles[]={0,1.3573834,0};
 			};
 			name="stc_h_pos_5";
 			id=13769;
@@ -35728,7 +36109,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11547.018,82.17981,7111.6924};
-				angles[]={-0,3.9642291,0};
+				angles[]={0,3.9642291,0};
 			};
 			name="stc_h_pos_10";
 			id=13780;
@@ -35891,7 +36272,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11483.873,85.372398,6957.3081};
-				angles[]={-0,4.0707603,0};
+				angles[]={0,4.0707603,0};
 			};
 			name="stc_h_pos_13";
 			id=13792;
@@ -35903,7 +36284,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11489.311,85.372398,6965.3276};
-				angles[]={-0,1.1224397,-0};
+				angles[]={0,1.1224397,0};
 			};
 			name="stc_h_pos_14";
 			id=13793;
@@ -35915,7 +36296,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11542.315,75.491325,6966};
-				angles[]={-0,2.8520291,0};
+				angles[]={0,2.8520291,0};
 			};
 			name="stc_h_pos_16";
 			id=13796;
@@ -35952,7 +36333,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11581.146,99.090584,7012.9653};
-				angles[]={-0,5.7075872,0};
+				angles[]={0,5.7075872,0};
 			};
 			name="stc_h_pos_19";
 			id=13799;
@@ -35964,7 +36345,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11629.411,75.959999,7045.8628};
-				angles[]={-0,1.319325,0};
+				angles[]={0,1.319325,0};
 			};
 			name="stc_h_pos_20";
 			id=13800;
@@ -36008,7 +36389,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11530.61,81.923798,7097.188};
-				angles[]={-0,0.7967934,0};
+				angles[]={0,0.7967934,0};
 			};
 			name="stc_h_pos_21";
 			id=13803;
@@ -36020,7 +36401,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11519.511,81.923798,7081.3604};
-				angles[]={-0,3.4576461,-0};
+				angles[]={0,3.4576461,0};
 			};
 			name="stc_h_pos_22";
 			id=13804;
@@ -36032,7 +36413,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11516.602,81.923798,7094.1787};
-				angles[]={-0,5.4455094,0};
+				angles[]={0,5.4455094,0};
 			};
 			name="stc_h_pos_23";
 			id=13805;
@@ -36061,7 +36442,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11533.227,81.923798,7084.8696};
-				angles[]={-0,1.7556049,-0};
+				angles[]={0,1.7556049,0};
 			};
 			name="stc_h_pos_24";
 			id=13806;
@@ -36085,7 +36466,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11674.57,84.972374,7223.4004};
-				angles[]={-0,1.466426,0};
+				angles[]={0,1.466426,0};
 			};
 			name="stc_h_pos_26";
 			id=13808;
@@ -36121,7 +36502,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11569.633,78.649559,7059.873};
-				angles[]={-0,0.078939319,0};
+				angles[]={0,0.078939319,0};
 			};
 			name="stc_h_pos_29";
 			id=13812;
@@ -36428,7 +36809,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11567.241,78.649559,7068.9063};
-				angles[]={-0,0.078941241,0};
+				angles[]={0,0.078941241,0};
 			};
 			name="stc_AA_pos_2";
 			id=13828;
@@ -36488,7 +36869,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11572.347,98.438019,7008.4341};
-				angles[]={0,4.427495,-0};
+				angles[]={0,4.427495,0};
 			};
 			name="stc_l_pos_0";
 			id=13835;
@@ -36513,7 +36894,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11586.741,79.270302,7113.188};
-				angles[]={-0,1.4534522,0};
+				angles[]={0,1.4534522,0};
 			};
 			name="stc_l_pos_2";
 			id=13837;
@@ -36525,7 +36906,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11571.797,83.827507,7131.355};
-				angles[]={-0,6.0608191,0};
+				angles[]={0,6.0608191,0};
 			};
 			name="stc_l_pos_3";
 			id=13838;
@@ -36537,7 +36918,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11549.59,82.17981,7118.8896};
-				angles[]={-0,6.0850592,0};
+				angles[]={0,6.0850592,0};
 			};
 			name="stc_l_pos_4";
 			id=13839;
@@ -36549,7 +36930,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11568.697,83.827507,7112.8711};
-				angles[]={-0,2.5322227,0};
+				angles[]={0,2.5322227,0};
 			};
 			name="stc_l_pos_5";
 			id=13840;
@@ -36561,7 +36942,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11539.681,75.491325,6964.9023};
-				angles[]={-0,2.852025,0};
+				angles[]={0,2.852025,0};
 			};
 			name="stc_sl_pos_0";
 			id=13841;
@@ -36573,12 +36954,13 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={11629.012,75.959999,7042.8345};
-				angles[]={-0,1.4823056,0};
+				position[]={11897.287,135.7179,5299.1704};
+				angles[]={0,1.4823056,0};
 			};
 			name="stc_sl_pos_1";
 			id=13842;
 			type="Logic";
+			atlOffset=2.7799835;
 		};
 		class Item705
 		{
@@ -36598,7 +36980,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11609.646,79.150452,7014.9678};
-				angles[]={-0,2.0884757,0};
+				angles[]={0,2.0884757,0};
 			};
 			name="stc_sl_pos_3";
 			id=13844;
@@ -36622,7 +37004,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11590.554,83.827507,7127.4312};
-				angles[]={-0,1.1856046,0};
+				angles[]={0,1.1856046,0};
 			};
 			name="stc_sl_pos_5";
 			id=13846;
@@ -36658,7 +37040,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11458.977,85.497032,7179.374};
-				angles[]={-0,1.4474001,0};
+				angles[]={0,1.4474001,0};
 			};
 			name="stc_sl_pos_8";
 			id=13852;
@@ -36670,7 +37052,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11452.566,85.497032,7172.0117};
-				angles[]={-0,4.596549,0};
+				angles[]={0,4.596549,0};
 			};
 			name="stc_sl_pos_9";
 			id=13853;
@@ -36682,7 +37064,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11482.395,85.372398,6963.5039};
-				angles[]={-0,4.9157991,-0};
+				angles[]={0,4.9157991,0};
 			};
 			name="stc_sl_pos_10";
 			id=13854;
@@ -36694,7 +37076,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11490.848,85.372398,6959.0664};
-				angles[]={-0,1.9629714,0};
+				angles[]={0,1.9629714,0};
 			};
 			name="stc_sl_pos_11";
 			id=13855;
@@ -36706,7 +37088,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11474.619,83.12001,7095.873};
-				angles[]={-0,4.6774955,0};
+				angles[]={0,4.6774955,0};
 			};
 			name="stc_sl_pos_12";
 			id=13856;
@@ -36718,7 +37100,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11481.313,83.210358,7073.0703};
-				angles[]={0,4.5453024,-0};
+				angles[]={0,4.5453024,0};
 			};
 			name="stc_sl_pos_13";
 			id=13857;
