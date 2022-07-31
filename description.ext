@@ -15,15 +15,15 @@ class Header
 
 // Mission Loading Info
 author = "Andy455 [Tour]";
-onLoadName = "30 [Tour] Power Surge v0.32";
+onLoadName = "30 [Tour] Power Surge v0.33";
 onLoadMission = "Royal marines assault a fortified power station"; // name of mission in MP Select screen
 onLoadMissionTime = true;
 loadScreen = "img\loadingScreen.paa"; // img\loadScreen.paa
-briefingName = "30 [Tour] Power Surge v0.32";
+briefingName = "30 [Tour] Power Surge v0.33";
 enableItemsDropping = 0;
 disabledAI = 1;
 enableDebugConsole[] = { "76561198000647052" };
-allowProfileGlasses = 0; // disables A3 profile glasses
+allowProfileGlasses = 1;
 
 // Respawn Settings
 respawn = 3;
@@ -58,11 +58,29 @@ class CfgDebriefing
 		picture = "b_inf";
 		pictureColor[] = { 0.0, 0.3, 0.6, 1 }; // blufor colours
 	};
+	class PARTIAL_SUCCESS
+	{
+		title = "Partial Success";
+		subtitle = "Power plant seized, but with collateral damage";
+		description = "The power plant was successfully seized from the KDF! However you have allowed destroyed some power transformers...";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = { 0.0, 0.3, 0.6, 1 }; // blufor colours
+	};
 	class FAIL
 	{
 		title = "Mission Aborted";
 		subtitle = "";
 		description = "You reported back in without completing all objectives.";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = { 0.0, 0.3, 0.6, 1 }; // blufor colours
+	};
+	class MEGA_FAIL
+	{
+		title = "Mission Failed";
+		subtitle = "";
+		description = "You failed to take the power plant, and damaged it in the attempt!";
 		pictureBackground = "";
 		picture = "b_inf";
 		pictureColor[] = { 0.0, 0.3, 0.6, 1 }; // blufor colours
@@ -330,6 +348,7 @@ class CfgFunctions
 // 		// };
 // 	};
 // };
+
 
 
 

@@ -34,4 +34,10 @@ HQ sideChat "God, damn it! OK, at least some of your made it out of there. Head 
 // sleep 5;
 // [WEST, "HQ"] sideRadio "TOUR_officernotgood";
 
-"FAIL" remoteExecCall ["BIS_fnc_endMissionServer", 0, true];
+if (_NCT == "FAILED") then {
+	"MEGA_FAIL" remoteExecCall ["BIS_fnc_endMissionServer", 0, true];
+} else {
+	"FAIL" remoteExecCall ["BIS_fnc_endMissionServer", 0, true];
+};
+
+

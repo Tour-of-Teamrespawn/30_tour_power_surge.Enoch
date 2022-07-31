@@ -103,11 +103,11 @@ if (isServer) then {
 	[1988,7,30,_timeH,_timeM] remoteExec ["setDate", 0, true];
 
 	// global effect
-	1 setFog A455_FOG;
+	0 setFog A455_FOG;
 };
 
 // local effect
-1 setOvercast A455_OVERCAST;
+0 setOvercast A455_OVERCAST;
 
 _rc = [TOUR_respawnTickets, TOUR_respawnTime] execVM "scripts\TOUR_RC\init.sqf";
 waitUntil {scriptDone _rc};
