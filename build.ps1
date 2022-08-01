@@ -23,6 +23,8 @@ $A3_Server = 'C:\Program Files (x86)\Steam\steamapps\common\Arma 3\arma3server_x
 
 $A3_Server_Config = "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\server.cfg"
 
+$MissionName_withV = "30 [Tour] Power Surge v" # assumed to be like "30 [Tour] Power Surge v1.1"
+
 $ClientModList = @(
     "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@CUP Terrains - Core",
     "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\!Workshop\@CUP Terrains - Maps",
@@ -86,7 +88,7 @@ if ($decision -eq 0) {
         Write-Host "Overwrote init.sqf with version tag successfully"
 
         $DescriptionEXT = Get-Content -Path (Join-Path -Path $ProjectRoot -ChildPath 'description.ext') -Raw
-        $NewDescriptionEXT = $DescriptionEXT -replace '30 \[Tour\] Power Surge v\d+\.\d+', "30 [Tour] Power Surge v$NewVersion"
+        $NewDescriptionEXT = $DescriptionEXT -replace ([regex]::Escape($MissionName_withV) + "\d+\.\d+"), ($MissionName_withV + $NewVersion)
         try { [System.IO.File]::WriteAllLines((Join-Path -Path $ProjectRoot -ChildPath 'description.ext'), $NewDescriptionEXT) }
         catch { throw "Failed to overwrite description.ext with version tag. You may need to close the file and re-run the build script." }
         Write-Host "Overwrote description.ext with version tag successfully"
