@@ -15,7 +15,7 @@ private _heli1v = _heli1 select 0;
 
 private _group2 = createGroup EAST;
 private _heliSpawn2 = [(getMarkerPos "heli_spawn"), 0, 500, 10, 0] call BIS_fnc_findSafePos;
-private _heli2 = [_helispawn2, (random 360), "UK3CB_KDF_O_Mi_24P", _group2, false] call BIS_fnc_spawnVehicle;
+private _heli2 = [_helispawn2, (random 360), "UK3CB_KDF_O_Mi_24V", _group2, false] call BIS_fnc_spawnVehicle; // UK3CB_KDF_O_Mi_24P is 30mm but cant aim
 {_x setSkill 1} foreach units (_heli2 select 2);
 private _heli2v = _heli2 select 0;
 
