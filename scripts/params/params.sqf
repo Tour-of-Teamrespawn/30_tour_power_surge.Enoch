@@ -104,10 +104,10 @@ if (isServer) then {
 
 	// global effect
 	0 setFog A455_FOG;
-};
 
-// local effect
-0 setOvercast A455_OVERCAST;
+	// local effect, should sync with server though
+	0 setOvercast A455_OVERCAST;
+};
 
 _rc = [TOUR_respawnTickets, TOUR_respawnTime] execVM "scripts\TOUR_RC\init.sqf";
 waitUntil {scriptDone _rc};
