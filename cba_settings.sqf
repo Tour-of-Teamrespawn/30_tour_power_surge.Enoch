@@ -68,7 +68,7 @@ force acex_headless_log = false;
 force acex_headless_transferLoadout = 0;
 
 // ACE Medical
-ace_medical_ai_enabledFor = 2;
+force ace_medical_ai_enabledFor = 2;
 ace_medical_AIDamageThreshold = 1;
 ace_medical_bleedingCoefficient = 1;
 ace_medical_blood_bloodLifetime = 900;
