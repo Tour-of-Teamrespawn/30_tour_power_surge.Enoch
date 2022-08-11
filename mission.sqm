@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=831;
+		nextID=849;
 	};
 	class Camera
 	{
@@ -1662,7 +1662,7 @@ class Mission
 					};
 					id=5323;
 					type="UK3CB_KDF_O_SNI";
-					atlOffset=23.310883;
+					atlOffset=23.310921;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1715,6 +1715,7 @@ class Mission
 						angles[]={0,1.3320361,0};
 					};
 					side="East";
+					flags=4;
 					class Attributes
 					{
 						skill=0.49901706;
@@ -1723,7 +1724,6 @@ class Mission
 					};
 					id=5324;
 					type="UK3CB_KDF_O_SPOT";
-					atlOffset=19.502113;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1772,7 +1772,7 @@ class Mission
 			{
 			};
 			id=5321;
-			atlOffset=23.310883;
+			atlOffset=23.310921;
 		};
 		class Item44
 		{
@@ -4318,7 +4318,7 @@ class Mission
 			name="spawn_veh_7";
 			id=7727;
 			type="Logic";
-			atlOffset=7.6293945e-006;
+			atlOffset=0.29418182;
 		};
 		class Item193
 		{
@@ -4332,7 +4332,7 @@ class Mission
 			init="if (isServer) then {  " \n " b4 = nearestObject [getPos this, ""Land_GarageRow_01_large_F""];  " \n " b4 setVariable [""A455_building_b4"", []];  " \n " b4 addEventHandler [""Killed"", {  " \n "  params [""_unit"", ""_killer"", ""_instigator"", ""_useEffects""];  " \n "  private _f = _unit getVariable ""A455_building_b4"";  " \n "  { deleteVehicle _x; } foreach _f;  " \n " }];  " \n "};";
 			id=7728;
 			type="Logic";
-			atlOffset=0.00021362305;
+			atlOffset=0.00017547607;
 		};
 		class Item194
 		{
@@ -4345,7 +4345,7 @@ class Mission
 			name="spawn_veh_9";
 			id=7729;
 			type="Logic";
-			atlOffset=7.6293945e-006;
+			atlOffset=0.32828522;
 		};
 		class Item195
 		{
@@ -4358,7 +4358,7 @@ class Mission
 			name="spawn_veh_10";
 			id=7730;
 			type="Logic";
-			atlOffset=7.6293945e-006;
+			atlOffset=0.34390259;
 		};
 		class Item196
 		{
@@ -4893,7 +4893,7 @@ class Mission
 					};
 					id=7886;
 					type="UK3CB_KDF_O_MK";
-					atlOffset=0.00012207031;
+					atlOffset=0.00016021729;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4955,7 +4955,7 @@ class Mission
 					};
 					id=7870;
 					type="UK3CB_KDF_O_AR";
-					atlOffset=0.00016784668;
+					atlOffset=0.00020599365;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5004,7 +5004,7 @@ class Mission
 			{
 			};
 			id=7885;
-			atlOffset=0.00012207031;
+			atlOffset=0.00016021729;
 		};
 		class Item222
 		{
@@ -20399,7 +20399,6 @@ class Mission
 			};
 			id=12381;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item475
 		{
@@ -20417,7 +20416,6 @@ class Mission
 			};
 			id=12382;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item476
 		{
@@ -20435,7 +20433,6 @@ class Mission
 			};
 			id=12383;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item477
 		{
@@ -20453,7 +20450,6 @@ class Mission
 			};
 			id=12384;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item478
 		{
@@ -20471,7 +20467,6 @@ class Mission
 			};
 			id=12385;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item479
 		{
@@ -20489,7 +20484,6 @@ class Mission
 			};
 			id=12386;
 			type="Land_BagFenceLong";
-			atlOffset=4.5776367e-005;
 		};
 		class Item480
 		{
@@ -20507,7 +20501,6 @@ class Mission
 			};
 			id=12387;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item481
 		{
@@ -20525,7 +20518,6 @@ class Mission
 			};
 			id=12388;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item482
 		{
@@ -20543,7 +20535,6 @@ class Mission
 			};
 			id=12389;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item483
 		{
@@ -20561,7 +20552,6 @@ class Mission
 			};
 			id=12390;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item484
 		{
@@ -20588,13 +20578,13 @@ class Mission
 				angles[]={6.278439,4.5182915,0.026820738};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				init="if (isServer) then { private _curVal = b7 getVariable ""A455_building_b7""; _curVal pushBack this; }; ";
 			};
 			id=12392;
 			type="Land_BagFenceLong";
-			atlOffset=6.7605133;
 		};
 		class Item486
 		{
@@ -20612,7 +20602,6 @@ class Mission
 			};
 			id=12393;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item487
 		{
@@ -20639,13 +20628,13 @@ class Mission
 				angles[]={6.278439,1.4139254,0.026820738};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				init="if (isServer) then { private _curVal = b7 getVariable ""A455_building_b7""; _curVal pushBack this; }; ";
 			};
 			id=12395;
 			type="Land_BagFenceLong";
-			atlOffset=6.7520676;
 		};
 		class Item489
 		{
@@ -20663,7 +20652,6 @@ class Mission
 			};
 			id=12396;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item490
 		{
@@ -20681,7 +20669,7 @@ class Mission
 			};
 			id=12397;
 			type="Land_BagFenceLong";
-			atlOffset=0.00015258789;
+			atlOffset=0.00011444092;
 		};
 		class Item491
 		{
@@ -20699,7 +20687,6 @@ class Mission
 			};
 			id=12398;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item492
 		{
@@ -20717,7 +20704,6 @@ class Mission
 			};
 			id=12399;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item493
 		{
@@ -20735,7 +20721,6 @@ class Mission
 			};
 			id=12400;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item494
 		{
@@ -20753,7 +20738,6 @@ class Mission
 			};
 			id=12401;
 			type="Land_BagFenceLong";
-			atlOffset=3.8146973e-005;
 		};
 		class Item495
 		{
@@ -23912,7 +23896,6 @@ class Mission
 			name="stc_h_pos_31";
 			id=13815;
 			type="Logic";
-			atlOffset=3.8146973e-005;
 		};
 		class Item678
 		{
@@ -23925,7 +23908,6 @@ class Mission
 			name="stc_h_pos_32";
 			id=13816;
 			type="Logic";
-			atlOffset=3.8146973e-005;
 		};
 		class Item679
 		{
@@ -23952,7 +23934,7 @@ class Mission
 					};
 					id=7879;
 					type="UK3CB_KDF_O_AT";
-					atlOffset=0.00048065186;
+					atlOffset=0.00044250488;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -24014,7 +23996,7 @@ class Mission
 					};
 					id=7884;
 					type="UK3CB_KDF_O_RIF_1";
-					atlOffset=0.00030517578;
+					atlOffset=0.00026702881;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -24063,7 +24045,7 @@ class Mission
 			{
 			};
 			id=7877;
-			atlOffset=0.00048065186;
+			atlOffset=0.00044250488;
 		};
 		class Item680
 		{
@@ -24088,7 +24070,6 @@ class Mission
 			name="stc_h_pos_35";
 			id=13821;
 			type="Logic";
-			atlOffset=3.3915329;
 		};
 		class Item682
 		{
@@ -24209,7 +24190,6 @@ class Mission
 			name="stc_AA_pos_3";
 			id=13829;
 			type="Logic";
-			atlOffset=3.8146973e-005;
 		};
 		class Item687
 		{
@@ -24339,7 +24319,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11629.298,75.959999,7042.918};
-				angles[]={-0,1.4823056,0};
+				angles[]={0,1.4823056,0};
 			};
 			name="stc_sl_pos_1";
 			id=13842;

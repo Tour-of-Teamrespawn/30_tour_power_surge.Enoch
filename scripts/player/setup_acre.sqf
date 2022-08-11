@@ -48,14 +48,14 @@ if (!hasinterface || { player != _unit }) exitwith { false };
 
 waitUntil { ([] call acre_api_fnc_isInitialized) };
 
-private _hasRadio = [_unit] call acre_api_fnc_hasRadio;
+// private _hasRadio = [_unit] call acre_api_fnc_hasRadio;
 
-if (!([_unit, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio)) then {
-    _unit addItem "ACRE_PRC343";
-};
-if (!([_unit, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio)) then {
-    _unit addItem "ACRE_PRC152";
-};
+// if (!([_unit, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio)) then {
+//     _unit addItem "ACRE_PRC343";
+// };
+// if (!([_unit, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio)) then {
+//     _unit addItem "ACRE_PRC152";
+// };
 
 private _personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 private _handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;

@@ -1,4 +1,5 @@
 waitUntil {!isNil "TOUR_init_complete"};
+waitUntil {!isNil "A455_DEBUG_MODE"};
 waitUntil {player == player};
 
 #include "initBriefing.hpp"

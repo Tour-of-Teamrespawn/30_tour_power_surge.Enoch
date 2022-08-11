@@ -1,6 +1,6 @@
 /*
 DO NOT EDIT THIS DIRECTLY, BUILD.PS1 will increment the minor version of this by 1 each time it runs
-###MISSION_VERSION 0.35
+###MISSION_VERSION 0.36
 */
 
 /* Creates an entry in the server and client RPT file with the mission name in place of the %1.
@@ -17,5 +17,6 @@ waitUntil {scriptDone _p};
 } forEach allUnits;
 
 [250, TOUR_viewDistance, 20, 0.05] execVM "scripts\params\viewDistance.sqf";
+
 
 
