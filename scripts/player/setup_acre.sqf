@@ -12,10 +12,6 @@
 
 params ["_unit", "_localUnittype"];
 
-if (A455_DEBUG_MODE) then {
-    // hint format ["Group: %1", _localUnittype];
-};
-
 ["ACRE_PRC343", "default", "TOUR_preset1"] call acre_api_fnc_copyPreset;
 ["ACRE_PRC152", "default", "TOUR_preset2"] call acre_api_fnc_copyPreset;
 
@@ -47,15 +43,6 @@ if (A455_DEBUG_MODE) then {
 if (!hasinterface || { player != _unit }) exitwith { false };
 
 waitUntil { ([] call acre_api_fnc_isInitialized) };
-
-// private _hasRadio = [_unit] call acre_api_fnc_hasRadio;
-
-// if (!([_unit, "ACRE_PRC343"] call acre_api_fnc_hasKindOfRadio)) then {
-//     _unit addItem "ACRE_PRC343";
-// };
-// if (!([_unit, "ACRE_PRC152"] call acre_api_fnc_hasKindOfRadio)) then {
-//     _unit addItem "ACRE_PRC152";
-// };
 
 private _personalRadio = ["ACRE_PRC343"] call acre_api_fnc_getRadioByType;
 private _handheldRadio = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType;
