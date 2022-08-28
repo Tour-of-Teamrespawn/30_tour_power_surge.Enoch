@@ -14,10 +14,10 @@ seizeTrigger setTriggerInterval 5;
 
 private _NCTask1Trigger = createTrigger ["EmptyDetector", [11553.5, 6989.65, 0.00131226]];
 _NCTask1Trigger settriggerArea [7, 7, 0, false];
-_NCTask1Trigger settriggerStatements ["count (nearestTerrainObjects [getPosATL thistrigger, [""HOUSE""], 7]) < 3", "call A455_fnc_failNCTask", ""];
+_NCTask1Trigger settriggerStatements ["count (nearestTerrainObjects [getPosATL thistrigger, [""HOUSE""], 7]) < 2", "call A455_fnc_failNCTask", ""];
 _NCTask1Trigger settriggerInterval 5;
 
 private _NCTask3Trigger = createTrigger ["EmptyDetector", [11584.7, 7181.38, 0.00144196]];
 _NCTask3Trigger settriggerArea [7, 7, 0, false];
-_NCTask3Trigger settriggerStatements ["count (nearestTerrainObjects [getPosATL thistrigger, [""HOUSE""], 7]) < 3", "call A455_fnc_failNCTask", ""];
+_NCTask3Trigger settriggerStatements ["count (nearestTerrainObjects [getPosATL thistrigger, [""HOUSE""], 7]) < 2", "call A455_fnc_failNCTask", ""];
 _NCTask3Trigger settriggerInterval 5;
