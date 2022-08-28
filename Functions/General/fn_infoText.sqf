@@ -20,7 +20,7 @@ _textArrayUnicode = [];
 
 //--- Separate letters
 _textArrayLines = [];
-for "_i" from 0 to (count _textArrayUnicode - 1) do {
+for "_i" from 0 to (count _textArrayUnicode - 1) step 1 do {
 	_line = _textArrayUnicode select _i;
 	_textArrayTemp = [];
 	{_textArrayTemp = _textArrayTemp + [tostring [_x]]} foreach _line;

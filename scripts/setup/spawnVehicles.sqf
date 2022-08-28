@@ -7,7 +7,7 @@ private _availableCars = "((gettext (_x >> ""faction"")) == ""UK3CB_KDF_O"") && 
 
 private _totalvehicles = 0;
 
-for [{ _i = 0 }, { _i <= 38 }, { _i = _i + 1 }] do {
+for "_i" from 0 to 38 step 1 do {
     if (_totalvehicles < _maxvehicles) then {
         if (_totalvehicles < _minvehicles || (_spawnRate > random 1)) then {
             private _logicObject = call compile ("spawn_veh_" + str _i);
@@ -20,7 +20,7 @@ for [{ _i = 0 }, { _i <= 38 }, { _i = _i + 1 }] do {
             _vehicle allowdamage false;
             _vehicle setDir (getDir _logicObject);
             
-            if (A455_DEBUG_modE) then {
+            if (A455_DEBUG_MODE) then {
                 private _marker = createMarker [("vehtracker_" + str random 10000000), _position];
                 _marker setMarkertype "hd_dot";
                 _marker setMarkerColor "ColorBlack";

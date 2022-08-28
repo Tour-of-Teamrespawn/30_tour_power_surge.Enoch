@@ -1,90 +1,72 @@
+<#
+.SYNOPSIS
+    TOUR build helper script
+.DESCRIPTION
+    TOUR build helper script to automatically bump version, pack as PBO, upload to Tour via FTP & start local dedicated server
+.NOTES
+    Author: Andy455
+    Version: v0.7
+.LINK
+    https://github.com/Tour-of-Teamrespawn/_build
+.EXAMPLE
+    .\build.ps1
+    Runs the build script*, which will prompt for yes/no answers for the options, and will ask for more information if uploading to Tour FTP.
+    
+    *Assuming you are currently _in_ the mission folder. If not, first enter "cd c:\path\to\my\mission.Altis" substituting the actual path (you
+    can copy and paste it from the file explorer)
+.EXAMPLE
+    .\build.ps1 -Update
+    As above, this runs the build script but in the self-updating mode where it will check GitHub for the latest version and overwrite itself if
+    there are any changes to be made.
+    You will need to re-run the script after it has completed to ensure you are running the new version.
+#>
+
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidAssignmentToAutomaticVariable', '')]
 
 [CmdletBinding(SupportsShouldProcess = $true)]
-param ()
-
-###################################################################################################
-# START VARIABLES
-###################################################################################################
-
-# If you have installed everything with defaults then this is likely to be the only variable you need
-# to touch.
-# KEEP THE "v" before the version!
-# Tour (proposed) mission naming standard like:
-#   "30 [Tour] MISSION NAME v1.1"
-#   "30 [Tour] Operation Bitemark v1.0"
-$MissionName_withV = "30 [Tour] Power Surge v" # assumed to be like "30 [Tour] Power Surge v1.1"
-
-###################################################################################################
-
-# Set your base folder for Arma 3
-$Arma3InstallFolder = 'C:\Program Files (x86)\Steam\steamapps\common\Arma 3'
-
-# Set your base folder for the Arma 3 Tools
-$Arma3ToolsFolder = 'C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools'
-
-# Where to save the resulting PBO, set to MPMissions for easy local testing
-$OutputPath = "$Arma3InstallFolder\MPMissions"
-
-###################################################################################################
-# Local dedicated server related variables.
-
-# dedicated server exe path path, usually same folder as client arma3.exe
-$A3_Server = "$Arma3InstallFolder\arma3server_x64.exe"
-
-# path to server config file
-$A3_Server_Config = "$Arma3InstallFolder\server.cfg"
-
-$ClientModList = @(
-    "$Arma3InstallFolder\!Workshop\@CUP Terrains - Core",
-    "$Arma3InstallFolder\!Workshop\@CUP Terrains - Maps",
-    "$Arma3InstallFolder\!Workshop\@CBA_A3",
-    "$Arma3InstallFolder\!Workshop\@RKSL Studios - Attachments v3.02",
-    "$Arma3InstallFolder\!Workshop\@RHSAFRF",
-    "$Arma3InstallFolder\!Workshop\@RHSUSAF",
-    "$Arma3InstallFolder\!Workshop\@JSRS SOUNDMOD",
-    "$Arma3InstallFolder\!Workshop\@3CB BAF Vehicles",
-    "$Arma3InstallFolder\!Workshop\@3CB BAF Weapons",
-    "$Arma3InstallFolder\!Workshop\@3CB BAF Equipment",
-    "$Arma3InstallFolder\!Workshop\@RHSGREF",
-    "$Arma3InstallFolder\!Workshop\@TOT",
-    "$Arma3InstallFolder\!Workshop\@3CB BAF Units",
-    "$Arma3InstallFolder\!Workshop\@CUP Terrains - Maps 2.0",
-    "$Arma3InstallFolder\!Workshop\@Jbad",
-    "$Arma3InstallFolder\!Workshop\@LYTHIUM",
-    "$Arma3InstallFolder\!Workshop\@RHSSAF",
-    "$Arma3InstallFolder\!Workshop\@ace",
-    "$Arma3InstallFolder\!Workshop\@JSRS SOUNDMOD - RHS USAF Mod Pack Sound Support",
-    "$Arma3InstallFolder\!Workshop\@JSRS SOUNDMOD - RHS  AFRF Mod Pack Sound Support",
-    "$Arma3InstallFolder\!Workshop\@ACRE2",
-    "$Arma3InstallFolder\!Workshop\@ACE Compat - RHS- SAF",
-    "$Arma3InstallFolder\!Workshop\@3CB Factions",
-    "$Arma3InstallFolder\!Workshop\@ACE Compat - RHS USAF",
-    "$Arma3InstallFolder\!Workshop\@ACE Compat - RHS AFRF",
-    "$Arma3InstallFolder\!Workshop\@ACE Compat - RHS- GREF",
-    "$Arma3InstallFolder\!Workshop\@JSRS SOUNDMOD - RHS SAF Mod Pack Support",
-    "$Arma3InstallFolder\!Workshop\@JSRS SOUNDMOD - Reloading Sounds",
-    "$Arma3InstallFolder\!Workshop\@JSRS SOUNDMOD - RHS GREF Mod Pack Sound Support",
-    "$Arma3InstallFolder\!Workshop\@3CB BAF Units (RHS compatibility)",
-    "$Arma3InstallFolder\!Workshop\@3CB BAF Weapons (RHS ammo compatibility)",
-    "$Arma3InstallFolder\!Workshop\@3CB BAF Vehicles (RHS reskins)"
-)
-
-$ServerModList = @(
-    "$Arma3InstallFolder\!Workshop\@LAMBS_Danger.fsm",
-    "$Arma3InstallFolder\!Workshop\@LAMBS_RPG",
-    "$Arma3InstallFolder\!Workshop\@LAMBS_RPG_RHS",
-    "$Arma3InstallFolder\!Workshop\@LAMBS_Suppression",
-    "$Arma3InstallFolder\!Workshop\@LAMBS_Turrets"
+param (
+    [Parameter(Mandatory=$false)]
+    [switch]$Update
 )
 
 ###################################################################################################
-# END VARIABLES
+
+# dot source variables file, works sort of like #include
+# separating variables from code allows auto-update functionality
+. "$PSScriptRoot\build.config.ps1"
+
 ###################################################################################################
 
-# Path to FileBank, part of the Arma 3 Tools steam download
-$FileBank_EXE = "$Arma3ToolsFolder\FileBank\FileBank.exe"
+if ($PSCmdlet.ShouldProcess('This script', 'Update script with latest version from GitHub')) {
 
+    Write-Host "Getting and comparing GitHub script with this script..."
+    $NewScriptContents = (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Tour-of-Teamrespawn/_build/main/build.ps1' -ErrorAction 'Stop').Content
+
+    $CurrentScriptContents = Get-Content -Path $MyInvocation.MyCommand.Path -Raw
+
+    if ($NewScriptContents -ne $CurrentScriptContents) {
+
+        if ($Update) {
+
+            Compare-Object -ReferenceObject ($CurrentScriptContents.split("`n")) -DifferenceObject ($NewScriptContents.split("`n")) | Out-String | Write-Verbose
+            
+            Write-Host "Updating this script with new file contents..."
+            [System.IO.File]::WriteAllText($MyInvocation.MyCommand.Path, $NewScriptContents)
+            
+            Write-Host "Script has been updated, please re-run to use new code." -ForegroundColor 'Yellow'
+            exit
+        } else {
+            Write-Host "There is a new version of the build script available, run '.\build.ps1 -Update' to update automatically." -ForegroundColor 'Yellow'
+        }
+
+    } else {
+        Write-Host "Current script matches latest script, skipping update and continuing as normal..." -ForegroundColor 'Green'
+    }
+} else {
+    Write-Verbose "Self-updater skipped"
+}
+
+$matches = $null
 $ErrorActionPreference = 'Stop'
 if (($null -eq $PSScriptRoot) -or ([System.String]::IsNullOrWhiteSpace($PSScriptRoot))) {
     # assume we are in the root of the mission folder (same as this file)
@@ -94,15 +76,17 @@ if (($null -eq $PSScriptRoot) -or ([System.String]::IsNullOrWhiteSpace($PSScript
 }
 $MissionFolderName = Split-Path $ProjectRoot -Leaf
 
-$decision = $Host.UI.PromptForChoice('Increment version and make PBO?', 'Are you sure you want to proceed?', @('&Yes', '&No'), 1)
-if ($decision -eq 0) {
+$inc_decision = $Host.UI.PromptForChoice('Increment version and make PBO?', 'Are you sure you want to proceed?', @('&Yes', '&No'), 1)
+if ($inc_decision -eq 0) {
     # Automatic increment of mission version found in init.sqf, used to add to the exported PBO
     $InitSQF = Get-Content -Path (Join-Path -Path $ProjectRoot -ChildPath 'init.sqf') -Raw
-    if ($InitSQF -match '###MISSION_VERSION\s+(\d+\.\d+)') {
+    # '###MISSION_VERSION\s+(\d+\.\d+)(-(\w+))?'
+    # '###MISSION_VERSION\s+(\d+\.\d+)'
+    if ($InitSQF -match '###MISSION_VERSION\s+(\d+\.\d+)(-(\w+))?') {
 
-        
-        $decision = $Host.UI.PromptForChoice('Set versioning method', 'Automatic version increment, or set manually?', @('&Automatic', '&Manual'), 0)
-        if ($decision -eq 0) {
+
+        $ver_decision = $Host.UI.PromptForChoice('Set versioning method', 'Automatic version increment, or set manually?', @('&Automatic', '&Manual'), 0)
+        if ($ver_decision -eq 0) {
             # automatic
             $Version = [System.Version]($Matches.1)
             Write-Host "Current mission version: $Version"
@@ -114,6 +98,7 @@ if ($decision -eq 0) {
             # manual
             $NewVersion = 'NOT A REAL VERSION'
             while ($NewVersion -notmatch '^\d+\.\d+$') {
+                Write-Host ""
                 try {
                     $NewVersion = Read-Host "Enter the desired version in the format XX.XX, where X can be any number of digits [0-9] with a dot separating them.`nFor example: 123.123 or 1.0`nDo not include any letters or symbols" -ErrorAction 'Stop'
                     $NewVersion = [System.Version]$NewVersion
@@ -123,9 +108,32 @@ if ($decision -eq 0) {
                 }
             }
         }
+
+        Write-Host ""
+
+        $tag_decision = $Host.UI.PromptForChoice('Add non-release tag', 'Would you like to add a tag? This is to show test versions such as "alpha", "beta", "RC1" etc', @('&No tag (This is a playable release)', '&Add non-release tag'), 0)
+        if ($tag_decision -eq 0) {
+            # do nothing, no tag added so define as empty
+            $TagName = ''
+        } else {
+            # request
+            $TagName = 'NOT A REAL TAG'
+            while ($TagName -notmatch '^[a-zA-Z]+$') {
+                Write-Host ""
+                try {
+                    $TagName = Read-Host "Enter the desired tag name, it must only be lowercase [a-z] or UPPERCASE [A-Z].`nFor example: beta or RC1`nDo not include any numbers, special characaters or spaces." -ErrorAction 'Stop'
+                } catch {
+                    # if we fail to read input, reset
+                    $TagName = 'NOT A REAL TAG'
+                }
+            }
+            if (![string]::IsNullOrWhiteSpace($TagName)) {
+                $TagName = "-$TagName"
+            }
+        }
         
         if ($PSCmdlet.ShouldProcess('All matching files', 'Update all references to version')) {
-            $NewInitSQF = ($InitSQF -replace '###MISSION_VERSION\s(\d+\.\d+)', "###MISSION_VERSION $NewVersion").split("`n")
+            $NewInitSQF = ($InitSQF -replace '###MISSION_VERSION\s+(\d+\.\d+)(-(\w+))?', ("###MISSION_VERSION " + $NewVersion + $TagName)).split("`n")
             # WriteAllText with joined string array instead of WriteAllLines to stop adding a CRLF to the end of file
             try {
                 [System.IO.File]::WriteAllText((Join-Path -Path $ProjectRoot -ChildPath 'init.sqf'), ($NewInitSQF -join "`n")) 
@@ -145,7 +153,7 @@ if ($decision -eq 0) {
 
                 if ($FileContents -match ([regex]::Escape($MissionName_withV) + '\d+\.\d+')) {
 
-                    $NewFileContents = ($FileContents -replace ([regex]::Escape($MissionName_withV) + '\d+\.\d+'), ($MissionName_withV + $NewVersion)).split("`n")
+                    $NewFileContents = ($FileContents -replace ([regex]::Escape($MissionName_withV) + '\d+\.\d+(-\w+)?'), ($MissionName_withV + $NewVersion + $TagName)).split("`n")
                     try {
                         [System.IO.File]::WriteAllText($File.FullName, ($NewFileContents -join "`n")) 
                     } catch {
@@ -160,8 +168,10 @@ if ($decision -eq 0) {
         }
 
     } else {
-        Write-Warning "Version missing from init.sqf. For automatic version increments add a block comment somewhere in your init.sqf with a line exactly like so: '###MISSION_VERSION 0.1'"
+        Write-Warning "Version missing from init.sqf. For automatic version increments add a comment somewhere in your init.sqf with a line exactly like so:`n###MISSION_VERSION 0.1`n   OR`n###MISSION_VERSION 1.1-beta'"
     }
+
+    Write-Host ""
 
     if ($PSCmdlet.ShouldProcess('Mission folder', 'Pack PBO and export')) {
         Write-Host "Packing mission folder: '$MissionFolderName' to path: '$OutputPath' as '$MissionFolderName.pbo'"
@@ -173,7 +183,13 @@ if ($decision -eq 0) {
         # insert (file name compatible) version to pbo before world
         # insert _mods_ as we pretty much always use them anyway
         # e.g. 30_tour_power_surge.Enoch.pbo -> 30_tour_power_surge_mods_0_2.Enoch.pbo
-        $PBO_withVersion = $ExportedPBO.Name.SubString(0, $ExportedPBO.Name.IndexOf('.')) + '_mods' + "_v$($NewVersion.ToString().Replace('.','_'))" + $ExportedPBO.Name.SubString($ExportedPBO.Name.IndexOf('.'))
+        $PBO_withVersion = $ExportedPBO.Name.SubString(0, $ExportedPBO.Name.IndexOf('.')) + '_mods' + "_v$($NewVersion.ToString().Replace('.','_'))" + $TagName.replace('-','_') + $ExportedPBO.Name.SubString($ExportedPBO.Name.IndexOf('.'))
+
+        $ExistingNamePBO = Get-Item -Path "$OutputPath\$PBO_withVersion" -ErrorAction 'SilentlyContinue'
+        if ($ExistingNamePBO) {
+            Write-Host "Renaming existing PBO with version from '$PBO_withVersion' to '$PBO_withVersion.backup'"
+            Rename-Item -Path $ExistingNamePBO.FullName -NewName "$PBO_withVersion.backup" -Force | Out-Null
+        }
 
         # rename PBO to include version
         Write-Host "Renaming PBO from '$MissionFolderName.pbo' to '$PBO_withVersion'"
@@ -192,10 +208,12 @@ if ($null -eq $NewPBO) {
     } 
 }
 
+Write-Host ""
+
 # PBO UPLOAD TO ARMA 3 TOUR SERVER
 if ($null -ne $PBO_withVersion) {
-    $decision = $Host.UI.PromptForChoice("Upload PBO '$PBO_withVersion' to the Tour ARMA 3 server ?", 'Are you sure you want to proceed?', @('&Yes', '&No'), 1)
-    if ($decision -eq 0) {
+    $pbo_decision = $Host.UI.PromptForChoice("Upload PBO '$PBO_withVersion' to the Tour ARMA 3 server ?", 'Are you sure you want to proceed?', @('&Yes', '&No'), 1)
+    if ($pbo_decision -eq 0) {
         # yes
         if ($null -eq $env:TOUR_SERVER_IP) {
             # Environment var for IP not set, prompt for response
@@ -261,24 +279,35 @@ if ($null -ne $PBO_withVersion) {
         if ($PSCmdlet.ShouldProcess($FTPPath, 'Upload PBO to')) {
             Write-Host "Starting FTP upload to '$FTPPath'"
 
-            $ftp = [System.Net.FtpWebRequest]::Create($FTPPath)
-            $ftp = [System.Net.FtpWebRequest]$ftp
-            $ftp.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
-            $ftp.Credentials = New-Object System.Net.NetworkCredential($FTPUsername, $FTPPassword)
-            $ftp.UseBinary = $true
-            $ftp.UsePassive = $true
-            $ftp.EnableSsl = $true
-            # read in the file to upload as a byte array
-            $content = [System.IO.File]::ReadAllBytes($NewPBO.FullName)
-            $ftp.ContentLength = $content.Length
-            # get the request stream, and write the bytes into it
-            $rs = $ftp.GetRequestStream()
-            $rs.Write($content, 0, $content.Length)
-            # be sure to clean up after ourselves
-            $rs.Close()
-            $rs.Dispose()
+            try {
+                $ftp = [System.Net.FtpWebRequest]::Create($FTPPath)
+                $ftp = [System.Net.FtpWebRequest]$ftp
+                $ftp.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
+                $ftp.Credentials = New-Object System.Net.NetworkCredential($FTPUsername, $FTPPassword)
+                $ftp.UseBinary = $true
+                $ftp.UsePassive = $true
+                $ftp.EnableSsl = $true
+                # read in the file to upload as a byte array
+                $content = [System.IO.File]::ReadAllBytes($NewPBO.FullName)
+                $ftp.ContentLength = $content.Length
+                # get the request stream, and write the bytes into it
+                $rs = $ftp.GetRequestStream()
+                $rs.Write($content, 0, $content.Length)
+                # be sure to clean up after ourselves
+                $rs.Close()
+                $rs.Dispose()
 
-            Write-Host 'FTP upload successful'
+                Write-Host 'FTP upload successful'
+            }
+            catch {
+                Write-Host "Failed to upload PBO to '$FTPPath'." -ForegroundColor 'Red' -BackgroundColor Black
+                Write-Host "Possible issues:" -ForegroundColor 'Red' -BackgroundColor Black
+                Write-Host "`tFTP password is invalid (changed recently?)" -ForegroundColor 'Red' -BackgroundColor Black
+                Write-Host "`tPBO with exact name already exists" -ForegroundColor 'Red' -BackgroundColor Black
+                Write-Host "`tNetwork connectivity" -ForegroundColor 'Red' -BackgroundColor Black
+                throw $_
+            }
+            
         }
         
     } else {
@@ -288,6 +317,7 @@ if ($null -ne $PBO_withVersion) {
 } else {
     Write-Warning "No PBO was generated nor one found in '$OutputPath' matching '$($MissionFolderName.split('.')[0])'. Skipping upload to Tour server..."
 }
+Write-Host ""
 
 # START LOCAL DEDICATED SERVER WITH LATEST MISSIONS
 $decision = $Host.UI.PromptForChoice('Start local dedicated server', 'Do you want to start up a local dedicated server?', @('&Yes', '&No'), 1)

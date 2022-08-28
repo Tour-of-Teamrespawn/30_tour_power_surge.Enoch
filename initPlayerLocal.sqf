@@ -6,7 +6,8 @@ waitUntil {player == player};
 
 laptop addAction ["Report In", "scripts\player\endAction.sqf", nil, 10, true, false, "", "(isNil {missionNameSpace getVariable 'TOUR_reportIn'}) && (player==leader group player) && (player distance _target < 2)"];
 
-player execVM "scripts\player\player_loadouts.sqf";
+_h = player execVM "scripts\player\player_loadouts.sqf";
+waitUntil {scriptDone _h};
 
 player playaction "stand";
 
@@ -15,7 +16,8 @@ if (!A455_DEBUG_MODE) then {
 };
 
 waitUntil { !isNil { player getVariable "A455_GROUP" }; };
-[player, (player getVariable "A455_GROUP")] execVM "scripts\player\setup_acre.sqf";
+_h = [player, (player getVariable "A455_GROUP")] execVM "scripts\player\setup_acre.sqf";
+waitUntil {scriptDone _h};
 
 A455_fnc_heliWarn = {
 	enableRadio true;

@@ -1,7 +1,7 @@
 params ["_group", "_whitelist", "_blacklist"];
 
 private _wpCount = 8;
-for [{ _i = 0 }, { _i < (_wpCount) }, { _i = _i + 1 }] do {
+for "_i" from 1 to _wpCount step 1 do {
 
 	_randomPosAroundCompound = [["m_ao"],["mkr_compound"]] call BIS_fnc_randomPos;
 	
@@ -12,11 +12,11 @@ for [{ _i = 0 }, { _i < (_wpCount) }, { _i = _i + 1 }] do {
 	_wp setWaypointCompletionRadius 20;
 	_wp setWaypointFormation "COLUMN";
 
-	if (_i == 0) then { 
+	if (_i == 1) then { 
 		_group setCurrentWaypoint _wp;
 	};
 
-	if (_i == 7) then {
+	if (_i == 8) then {
 		_wp setWaypointType "CYCLE";
 	} else {
 		_wp setWaypointType "MOVE";

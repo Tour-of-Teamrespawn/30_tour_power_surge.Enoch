@@ -26,7 +26,7 @@ PRC152 (Long range) = PTT 2 / Right ear<br/>
 You have the following assets to your disposal:<br/>
 -3x Land Rover Hard Top FFR's (unarmed), loaded up with ammunition, rockets and grenade boxes.<br/>
 -1x Land Rover Soft Top FFR's (unarmed), loaded up with medical gear and additional mortar HE, smoke and flare rounds.<br/>
--1x L16 82mm mortar.<br/><br/>
+-1x Mk6 82mm mortar.<br/><br/>
 
 CAS:<br/>
 Not available at this time.<br/><br/>

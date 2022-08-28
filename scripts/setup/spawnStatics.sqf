@@ -1,8 +1,8 @@
 private ["_totalStatics", "_totalAA", "_totalSL", "_totalLow", "_spawnedStatics", "_spawnedAA", "_spawnedSL", "_spawnedLow"];
-private _numberOfAAStaticspositions = 7; // AA
-private _numberOfHighStaticspositions = 36; // high statics
-private _numberOfLowStaticspositions = 7; // low statics
-private _numberOfSearchlightspositions = 10; // searchlights
+private _numberOfAAStaticspositions = 6; // AA
+private _numberOfHighStaticspositions = 35; // high statics
+private _numberOfLowStaticspositions = 6; // low statics
+private _numberOfSearchlightspositions = 13; // searchlights
 
 private _lowClasses = ["UK3CB_KDF_O_Metis", "UK3CB_KDF_O_DSHkM_Mini_TriPod", "UK3CB_KDF_O_NSV", "UK3CB_KDF_O_PKM_Low", "UK3CB_KDF_O_SPG9"];
 private _highClasses = ["UK3CB_KDF_O_DSHKM",  "UK3CB_KDF_O_PKM_High"];
@@ -15,19 +15,19 @@ private _manAAClasses = ["UK3CB_KDF_O_AA", "UK3CB_KDF_O_AT", "UK3CB_KDF_O_LAT"];
 private _allCreated = [];
 
 switch (A455_ENEMY_STRENGTH) do {
-    case 0.33: {
+    case 0.30: {
         _totalStatics = 4 + (ceil random 5);
         _totalAA = 1 + (ceil random 2);
         _totalSL = 4 + (ceil random 4);
 		_totalLow = 1 + (ceil random 2);
     };
-    case 0.50: {
+    case 0.45: {
         _totalStatics = 5 + (ceil random 5);
         _totalAA = 1 + (ceil random 2);
         _totalSL = 5 + (ceil random 5);
 		_totalLow = 2 + (ceil random 2);
     };
-    case 0.75: {
+    case 0.65: {
         _totalStatics = 8 + (ceil random 5);
         _totalAA = 2 + (ceil random 3);
         _totalSL = 7 + (ceil random 3);
@@ -59,8 +59,8 @@ while {(_spawnedStatics < _totalStatics)} do {
 	};
 };
 
-for [{ _i = 0 }, { _i < (_numberOfHighStaticspositions) }, { _i = _i + 1 }] do {
-	if (!(_i in _usedNums) && A455_ENEMY_STRENGTH > random 1 ) then {
+for "_i" from 0 to _numberOfHighStaticspositions step 1 do {
+	if (!(_i in _usedNums) && A455_ENEMY_STRENGTH > random 1.1 ) then {
 		private _logicObject = call compile ("stc_h_pos_" + str _i);
 		private _pos = [(getPosATL _logicObject select 0), (getPosATL _logicObject select 1), (getPosATL _logicObject select 2) + 0.1];
 		private _manType = selectRandom _manClasses;
@@ -97,8 +97,8 @@ while {(_spawnedLow < _totalLow)} do {
 	};
 };
 
-for [{ _i = 0 }, { _i < (_numberOfLowStaticspositions) }, { _i = _i + 1 }] do {
-	if (!(_i in _usedNums) && A455_ENEMY_STRENGTH > random 1 ) then {
+for "_i" from 0 to _numberOfLowStaticspositions step 1 do {
+	if (!(_i in _usedNums) && A455_ENEMY_STRENGTH > random 1.1 ) then {
 		private _logicObject = call compile ("stc_l_pos_" + str _i);
 		private _pos = [(getPosATL _logicObject select 0), (getPosATL _logicObject select 1), (getPosATL _logicObject select 2) + 0.1];
 		private _manType = selectRandom _manClasses;
@@ -135,8 +135,8 @@ while {(_spawnedAA < _totalAA)} do {
 	};
 };
 
-for [{ _i = 0 }, { _i < (_numberOfAAStaticspositions) }, { _i = _i + 1 }] do {
-	if (!(_i in _usedNums) && A455_ENEMY_STRENGTH > random 1 ) then {
+for "_i" from 0 to _numberOfAAStaticspositions step 1 do {
+	if (!(_i in _usedNums) && A455_ENEMY_STRENGTH > random 1.1 ) then {
 		private _logicObject = call compile ("stc_AA_pos_" + str _i);
 		private _pos = [(getPosATL _logicObject select 0), (getPosATL _logicObject select 1), (getPosATL _logicObject select 2) + 0.1];
 		private _manType = selectRandom _manAAClasses;

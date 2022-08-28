@@ -5,7 +5,7 @@ private _maxTanks = _this select 1;
 private _availableTanks = "((getText (_x >> ""faction"")) == ""UK3CB_KDF_O"") && (configName _x isKindOf ""Tank"")" configClasses (configFile >> "CfgVehicles");
 
 private _totalTanks = 0;
-for [{ _i = 0 }, { _i < 5 }, { _i = _i + 1 }] do {
+for "_i" from 0 to 4 step 1 do {
 	private _logicObject = call compile ("spawn_tank_" + str _i);
 
 	if (_totalTanks < _maxTanks && !isNull _logicObject) then {
@@ -43,14 +43,14 @@ for [{ _i = 0 }, { _i < 5 }, { _i = _i + 1 }] do {
 			} foreach _nearestBuildings;
 			
 			// create 3 crew
-			for [{ _c = 0 }, { _c < 3 }, { _c = _c + 1 }] do {
+			for "_c" from 0 to 2 step 1 do {
 				private _pos2 = selectRandom (_buildingWith3Positions buildingPos -1);
 				_crew = _crewGroup createUnit ["UK3CB_KDF_O_CREW", _pos2, [], 0, "CAN_COLLIDE"];
 				_crew setPos _pos2;
 				_crew disableAI "PATH";
 				// hint str _crew;
 				[_crew] joinSilent _crewGroup;
-				if (_c == 2) then {
+				if (_c == 0) then {
 					_crew setRank "SERGEANT";
 				};
 				

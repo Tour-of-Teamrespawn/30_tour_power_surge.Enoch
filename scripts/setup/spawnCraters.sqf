@@ -2,7 +2,7 @@ private _craterClasses = ["Land_ShellCrater_02_small_F", "Land_ShellCrater_02_la
 private _centre = getMarkerPos "mkr_craters";
 private _numberOfCraters = 30;
 
-for [{ _i = 0 }, { _i < (_numberOfCraters) }, { _i = _i + 1 }] do {
+for "_i" from 1 to _numberOfCraters step 1 do {
 	private _class = selectRandom _craterClasses;
 	private _pos = [_centre, 0, 150] call BIS_fnc_findSafePos;
 	private _crater = createvehicle [_class, _pos, [], 0, "CAN_COLLIDE"];
