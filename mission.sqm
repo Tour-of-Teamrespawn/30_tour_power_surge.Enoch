@@ -20,14 +20,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=867;
+		nextID=903;
 	};
 	class Camera
 	{
 		pos[]={11517.043,111.83064,7175.4395};
-		dir[]={0.43978101,-0.59994692,-0.66832364};
-		up[]={0.32979017,0.80003983,-0.50117344};
-		aside[]={-0.83536303,0,-0.54969895};
+		dir[]={0.5227319,-0.36067712,-0.7724399};
+		up[]={0.20214358,0.9326908,-0.29870719};
+		aside[]={-0.82818443,0,-0.5604558};
 	};
 };
 binarizationWanted=0;
@@ -844,6 +844,8 @@ class Mission
 		forecastWind=0.1;
 		forecastWaves=0.1;
 		forecastLightnings=0.1;
+		wavesForced=1;
+		windForced=1;
 		year=1988;
 		month=7;
 		day=30;
@@ -4593,7 +4595,7 @@ class Mission
 					};
 					id=7886;
 					type="UK3CB_KDF_O_MK";
-					atlOffset=0.00016021729;
+					atlOffset=0.00019073486;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4643,7 +4645,7 @@ class Mission
 					};
 					id=7870;
 					type="UK3CB_KDF_O_AR";
-					atlOffset=0.00020599365;
+					atlOffset=0.00023651123;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4680,7 +4682,7 @@ class Mission
 			{
 			};
 			id=7885;
-			atlOffset=0.00016021729;
+			atlOffset=0.00019073486;
 		};
 		class Item212
 		{
@@ -5576,7 +5578,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="[[[[],[]],[[""UK3CB_BAF_762_20Rnd"",""UK3CB_BAF_762_L42A1_20Rnd_T""],[30,10]],[[""murshun_cigs_cig0_nv""],[20]],[[],[]]],false]";
+							value="[[[[],[]],[[""rhs_mag_20Rnd_762x51_m80_fnfal"",""rhs_mag_20Rnd_762x51_m80_fnfal""],[30,10]],[[""murshun_cigs_cig0_nv""],[20]],[[],[]]],false]";
 						};
 					};
 				};
@@ -5673,7 +5675,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="[[[[],[]],[[""UK3CB_BAF_9_13Rnd"",""UK3CB_BAF_9_17Rnd"",""UK3CB_BAF_762_L42A1_20Rnd"",""UK3CB_BAF_762_100Rnd_T""],[3,3,30,20]],[[],[]],[[],[]]],false]";
+							value="[[[[],[]],[[""UK3CB_BAF_9_13Rnd"",""UK3CB_BAF_9_17Rnd"",""rhs_mag_20Rnd_762x51_m80_fnfal"",""UK3CB_BAF_762_100Rnd_T""],[10,10,20,10]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
@@ -5743,7 +5745,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="[[[[],[]],[[""UK3CB_BAF_9_13Rnd"",""UK3CB_BAF_9_17Rnd"",""UK3CB_BAF_762_L42A1_20Rnd"",""UK3CB_BAF_762_100Rnd_T""],[3,3,30,20]],[[],[]],[[],[]]],false]";
+							value="[[[[],[]],[[""UK3CB_BAF_9_13Rnd"",""UK3CB_BAF_9_17Rnd"",""rhs_mag_20Rnd_762x51_m80_fnfal"",""UK3CB_BAF_762_100Rnd_T""],[10,10,20,10]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
@@ -5813,7 +5815,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="[[[[],[]],[[""UK3CB_BAF_9_13Rnd"",""UK3CB_BAF_9_17Rnd"",""UK3CB_BAF_762_L42A1_20Rnd"",""UK3CB_BAF_762_100Rnd_T""],[3,3,30,20]],[[],[]],[[],[]]],false]";
+							value="[[[[],[]],[[""UK3CB_BAF_9_13Rnd"",""UK3CB_BAF_9_17Rnd"",""rhs_mag_20Rnd_762x51_m80_fnfal"",""UK3CB_BAF_762_100Rnd_T""],[10,10,20,10]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
@@ -19529,6 +19531,7 @@ class Mission
 			};
 			id=12392;
 			type="Land_BagFenceLong";
+			atlOffset=3.0517578e-005;
 		};
 		class Item469
 		{
@@ -19579,6 +19582,7 @@ class Mission
 			};
 			id=12395;
 			type="Land_BagFenceLong";
+			atlOffset=3.0517578e-005;
 		};
 		class Item472
 		{
@@ -22884,6 +22888,7 @@ class Mission
 			name="stc_h_pos_35";
 			id=13821;
 			type="Logic";
+			atlOffset=3.0517578e-005;
 		};
 		class Item661
 		{
